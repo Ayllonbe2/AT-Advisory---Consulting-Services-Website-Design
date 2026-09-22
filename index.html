@@ -13,15 +13,16 @@
   @media (max-width: 700px) { .about-image { display: none !important; } }
   .nav-toggle-control { position: absolute; opacity: 0; pointer-events: none; }
   .nav-toggle-label { display: none; cursor: pointer; font-size: 0; }
-  .nav-toggle-label::before, .nav-toggle-label::after, .nav-toggle-label span { content: ""; display: block; width: 20px; height: 2px; margin: 4px 0; background: currentColor; }
+  .nav-toggle-label span { display: block; width: 20px; height: 2px; margin: 4px 0; background: currentColor; }
+  .nav { position: relative; z-index: 20; overflow: visible; }
   .nav-menu { display: flex; align-items: center; gap: var(--space-3); }
   .language-picker { position: relative; margin-left: 4px; }
   .language-picker summary { list-style: none; cursor: pointer; display: block; }
   .language-picker summary::-webkit-details-marker { display: none; }
   .language-current { display: block; }
   .language-current img { display: block; }
-  .language-options { position: absolute; top: calc(100% + 8px); right: 0; z-index: 10; display: grid; gap: 8px; padding: 10px; background: var(--color-bg); border: 1px solid var(--color-divider); }
-  .language-options img { display: block; cursor: pointer; }
+  .language-options { position: absolute; top: calc(100% + 8px); right: 0; z-index: 30; display: grid; justify-items: center; gap: 10px; min-width: 44px; padding: 10px; background: var(--color-bg); border: 1px solid var(--color-divider); box-shadow: var(--shadow-sm); }
+  .language-options img { display: block; width: 24px; height: auto; cursor: pointer; }
   @media (max-width: 760px) {
     .nav { flex-wrap: wrap; gap: 12px; }
     .nav-toggle-label { display: inline-block; margin-left: auto; padding: 8px 10px; }
