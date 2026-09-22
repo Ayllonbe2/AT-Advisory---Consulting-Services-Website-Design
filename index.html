@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/industry-dcb30d44-7141-41ba-a4aa-adce955fb917/styles.css">
+<script src="_ds/industry-dcb30d44-7141-41ba-a4aa-adce955fb917/_ds_bundle.js"></script>
+<style>
+  body { margin: 0; text-wrap: pretty; background: var(--color-bg); color: var(--color-text); }
+  html { scroll-behavior: smooth; }
+  a { color: var(--color-accent-700); text-decoration: none; }
+  a:hover { color: var(--color-accent-800); text-decoration: underline; }
+  @media (max-width: 700px) { .about-image { display: none !important; } }
+</style>
+</helmet>
+<div ref="{{ rootRef }}" style="background: var(--color-bg)">
+
+  <nav class="nav" style="padding-inline: max(clamp(20px,5vw,64px), calc((100% - 1240px) / 2 + clamp(20px,5vw,64px)))">
+    <span class="nav-brand" style="white-space: nowrap; color: var(--color-accent-900)">AT ADVISORY</span>
+    <a href="#about" data-i18n="navAbout">About me</a>
+    <a href="#services" data-i18n="navServices">Services</a>
+    <a href="#audience" data-i18n="navAudience">Who it's for</a>
+    <a href="#engagement" data-i18n="navEngagement">How we work</a>
+    <a href="#contact" data-i18n="navContact">Contact</a>
+    <span style="display: flex; gap: 6px; align-items: center; margin-left: 4px">
+      <img src="flags/es.svg" alt="Español" width="24" data-lang="es" onClick="{{ onLang }}" style="cursor: pointer; display: block" />
+      <img src="flags/gb.svg" alt="English" width="24" data-lang="en" onClick="{{ onLang }}" style="cursor: pointer; display: block" />
+      <img src="flags/fr.svg" alt="Français" width="24" data-lang="fr" onClick="{{ onLang }}" style="cursor: pointer; display: block" />
+    </span>
+    <a href="#contact" class="btn btn-primary" data-i18n="navCta" style="text-decoration: none; white-space: nowrap; flex: 0 0 auto">Start a conversation</a>
+  </nav>
+
+  <section style="background: var(--color-accent-900); color: var(--color-bg)">
+    <div style="max-width: 1240px; margin: 0 auto; padding: clamp(64px,9vw,128px) clamp(20px,5vw,64px) 0">
+      <span style="display: block; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-accent-300); margin-bottom: 28px" data-i18n="heroKicker">Ayllon Tech Advisory · Madrid</span>
+      <h1 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(46px,7.4vw,104px); line-height: 0.94; letter-spacing: -0.015em; text-transform: uppercase; margin: 0; max-width: 20ch">
+        <span style="display: block" data-i18n="heroLine1">AI portfolios that earn</span>
+        <span style="display: block; color: var(--color-accent-400)" data-i18n="heroLine2">their budget.</span>
+      </h1>
+      <p style="font-size: 17px; line-height: 1.7; max-width: 62ch; margin: 32px 0 0; color: var(--color-accent-200)" data-i18n="heroSub">Ayllon Tech Advisory — Aarón Ayllón Benítez, PhD. I own enterprise AI and ML platforms at BASF Digital Solutions: what gets built, what gets scaled, what gets handed to a better owner, and what gets shut down. I bring the same discipline to mid-size companies, scale-ups and publicly funded programmes.</p>
+      <div style="display: flex; gap: var(--space-3); flex-wrap: wrap; margin-top: 36px">
+        <a href="#contact" class="btn btn-primary blueprint" data-i18n="heroCta1" style="text-decoration: none; white-space: nowrap; flex: 0 0 auto"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>Book an advisory day</a>
+        <a href="#services" class="btn btn-ghost" data-i18n="heroCta2" style="text-decoration: none; white-space: nowrap; flex: 0 0 auto; color: var(--color-bg); border-color: color-mix(in srgb, var(--color-bg) 45%, transparent)">See the services</a>
+      </div>
+
+      <div style="margin-top: clamp(56px,7vw,96px); border-top: 1px solid color-mix(in srgb, var(--color-bg) 22%, transparent); display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr))">
+        <div style="padding: 28px clamp(16px,2vw,32px) 32px 0; border-right: 1px solid color-mix(in srgb, var(--color-bg) 14%, transparent)">
+          <div style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-accent-400); margin-bottom: 12px" data-i18n="credLabel1">Training</div>
+          <div style="font-family: var(--font-heading); font-weight: 500; font-size: 21px; line-height: 1.2" data-i18n="credText1">PhD Computer Science · MSc Artificial Intelligence</div>
+        </div>
+        <div style="padding: 28px clamp(16px,2vw,32px) 32px; border-right: 1px solid color-mix(in srgb, var(--color-bg) 14%, transparent)">
+          <div style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-accent-400); margin-bottom: 12px" data-i18n="credLabel2">Enterprise</div>
+          <div style="font-family: var(--font-heading); font-weight: 500; font-size: 21px; line-height: 1.2" data-i18n="credText2">Owner of enterprise AI &amp; ML platforms at BASF Digital Solutions</div>
+        </div>
+        <div style="padding: 28px clamp(16px,2vw,32px) 32px; border-right: 1px solid color-mix(in srgb, var(--color-bg) 14%, transparent)">
+          <div style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-accent-400); margin-bottom: 12px" data-i18n="credLabel3">Research</div>
+          <div style="font-family: var(--font-heading); font-weight: 500; font-size: 21px; line-height: 1.2" data-i18n="credText3">Published in machine learning, ontologies and knowledge graphs</div>
+        </div>
+        <div style="padding: 28px 0 32px clamp(16px,2vw,32px)">
+          <div style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-accent-400); margin-bottom: 12px" data-i18n="credLabel4">Hands-on</div>
+          <div style="font-family: var(--font-heading); font-weight: 500; font-size: 21px; line-height: 1.2" data-i18n="credText4">Still shipping production code as co-founder of a live B2B platform</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div style="max-width: 1240px; margin: 0 auto; padding: 0 clamp(20px,5vw,64px)">
+
+    <section id="services" style="padding: clamp(56px,7vw,96px) 0 clamp(32px,4vw,56px)">
+      <span style="display: block; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 20px" data-i18n="servicesKicker">What I do</span>
+      <h2 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(32px,4.2vw,56px); line-height: 1.02; text-transform: uppercase; letter-spacing: -0.01em; margin: 0 0 clamp(36px,4vw,56px); color: var(--color-accent-900); max-width: 24ch" data-i18n="servicesTitle">Four things worth paying an outsider for</h2>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(20px,2.5vw,32px)">
+        <div class="card blueprint" style="padding: clamp(24px,2.6vw,36px)">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="font-family: var(--font-heading); font-weight: 600; font-size: 40px; line-height: 1; color: var(--color-accent-400)">01</div>
+          <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 26px; line-height: 1.12; text-transform: uppercase; margin: 16px 0 12px; color: var(--color-accent-900)" data-i18n="svc1Title">AI portfolio review &amp; rationalisation</h3>
+          <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="svc1Text">A structured read of every AI and data initiative you fund: what deserves more, what belongs with a better-fit owner, and what should be closed. I have made all three calls on platforms I owned myself and defended them in front of senior leadership.</p>
+        </div>
+        <div class="card blueprint" style="padding: clamp(24px,2.6vw,36px)">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="font-family: var(--font-heading); font-weight: 600; font-size: 40px; line-height: 1; color: var(--color-accent-400)">02</div>
+          <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 26px; line-height: 1.12; text-transform: uppercase; margin: 16px 0 12px; color: var(--color-accent-900)" data-i18n="svc2Title">MLOps platform setup &amp; reusable templates</h3>
+          <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="svc2Text">The plumbing that makes the second project cheaper than the first: standardised pipelines, a peer-reviewed template library, and adoption measured through active users and time saved per user rather than slideware.</p>
+        </div>
+        <div class="card blueprint" style="padding: clamp(24px,2.6vw,36px)">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="font-family: var(--font-heading); font-weight: 600; font-size: 40px; line-height: 1; color: var(--color-accent-400)">03</div>
+          <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 26px; line-height: 1.12; text-transform: uppercase; margin: 16px 0 12px; color: var(--color-accent-900)" data-i18n="svc3Title">Build-vs-buy &amp; vendor evaluation</h3>
+          <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="svc3Text">Proof-of-concept design, benchmarking of competing tools and a written recommendation you can hand to a budget holder — covering delivery and partnership models, not only licence prices.</p>
+        </div>
+        <div class="card blueprint" style="padding: clamp(24px,2.6vw,36px)">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="font-family: var(--font-heading); font-weight: 600; font-size: 40px; line-height: 1; color: var(--color-accent-400)">04</div>
+          <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 26px; line-height: 1.12; text-transform: uppercase; margin: 16px 0 12px; color: var(--color-accent-900)" data-i18n="svc4Title">Team building, hiring &amp; mentoring</h3>
+          <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="svc4Text">Hiring plans, interview design, career paths and coaching for the managers who report to you — including the underperformance conversations most organisations route around.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="audience" style="padding: clamp(40px,5vw,72px) 0">
+      <span style="display: block; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 32px" data-i18n="audKicker">Who it's for</span>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: clamp(24px,3vw,48px)">
+        <div style="border-top: 2px solid var(--color-accent-900); padding-top: 20px">
+          <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 1.15; text-transform: uppercase; margin: 0 0 12px; color: var(--color-accent-900)" data-i18n="aud1Title">Mid-size companies</h3>
+          <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="aud1Text">Enough data to matter, not enough people to run a platform team. I help you choose the few things worth industrialising and stop paying for the rest.</p>
+        </div>
+        <div style="border-top: 2px solid var(--color-accent-900); padding-top: 20px">
+          <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 1.15; text-transform: uppercase; margin: 0 0 12px; color: var(--color-accent-900)" data-i18n="aud2Title">Startups &amp; scale-ups</h3>
+          <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="aud2Text">Technical depth on tap for founders: architecture and model reviews, MLOps foundations, and an honest read on what your AI claims can actually support.</p>
+        </div>
+        <div style="border-top: 2px solid var(--color-accent-900); padding-top: 20px">
+          <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 1.15; text-transform: uppercase; margin: 0 0 12px; color: var(--color-accent-900)" data-i18n="aud3Title">Public sector &amp; EU-funded programmes</h3>
+          <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="aud3Text">Work-package design, governance and semantic standards for consortia — from someone who has authored and published an ontology governance model, not only cited one.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="engagement" style="padding: clamp(40px,5vw,72px) 0">
+      <span style="display: block; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 32px" data-i18n="engKicker">How we work</span>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: clamp(20px,2.5vw,32px)">
+        <div class="card blueprint" style="padding: clamp(22px,2.4vw,32px)">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <span class="tag tag-accent" data-i18n="eng1Tag">One day</span>
+          <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 1.15; text-transform: uppercase; margin: 16px 0 12px; color: var(--color-accent-900)" data-i18n="eng1Title">Advisory day / diagnostic</h3>
+          <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="eng1Text">A single day, remote or on site, on one decision you have to make. You leave with the recommendation in writing.</p>
+        </div>
+        <div class="card blueprint" style="padding: clamp(22px,2.4vw,32px)">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <span class="tag tag-accent" data-i18n="eng2Tag">Weeks</span>
+          <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 1.15; text-transform: uppercase; margin: 16px 0 12px; color: var(--color-accent-900)" data-i18n="eng2Title">Fixed-scope project</h3>
+          <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="eng2Text">A defined deliverable within a few weeks: a portfolio review, a vendor benchmark, a platform blueprint or a hiring plan.</p>
+        </div>
+        <div class="card blueprint" style="padding: clamp(22px,2.4vw,32px)">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <span class="tag tag-accent" data-i18n="eng3Tag">Days per month</span>
+          <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 1.15; text-transform: uppercase; margin: 16px 0 12px; color: var(--color-accent-900)" data-i18n="eng3Title">Fractional AI leadership</h3>
+          <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="eng3Text">Recurring presence as the AI leader you do not yet have — typically two to four days a month, steering the roadmap and the people.</p>
+        </div>
+      </div>
+      <p style="font-size: 15.5px; line-height: 1.7; margin: clamp(28px,3vw,40px) 0 0; max-width: 64ch; color: var(--color-neutral-700)" data-i18n="engNote">Capacity is deliberately limited to two to four days a month alongside a full-time platform role, so engagements are scoped around decisions rather than staffing. Working languages: Spanish, English and French. Based in Madrid, remote across Europe.</p>
+    </section>
+
+    <sc-if value="{{ showPrinciples }}" hint-placeholder-val="{{ true }}">
+      <section style="padding: clamp(40px,5vw,72px) 0">
+        <span style="display: block; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 32px" data-i18n="prKicker">How I decide</span>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: clamp(24px,3vw,48px)">
+          <div style="border-top: 1px solid var(--color-divider); padding-top: 20px">
+            <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 22px; line-height: 1.18; margin: 0 0 12px; color: var(--color-accent-900)" data-i18n="pr1Title">Build the bench, not just the backlog</h3>
+            <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="pr1Text">Deliberate hiring, individual career paths and coaching of the managers who report into the role — including the hard conversations, because a team's ceiling is set by its weakest link.</p>
+          </div>
+          <div style="border-top: 1px solid var(--color-divider); padding-top: 20px">
+            <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 22px; line-height: 1.18; margin: 0 0 12px; color: var(--color-accent-900)" data-i18n="pr2Title">Be willing to kill your own product</h3>
+            <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="pr2Text">I recommended closing a platform I owned once the ROI and adoption data no longer supported it, and transferred another to a better-fit owner — both defended with numbers in front of senior leadership.</p>
+          </div>
+          <div style="border-top: 1px solid var(--color-divider); padding-top: 20px">
+            <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 22px; line-height: 1.18; margin: 0 0 12px; color: var(--color-accent-900)" data-i18n="pr3Title">Translate between worlds</h3>
+            <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="pr3Text">Challenging model choices with ML engineers in the morning and framing the same problem as a business case for executives in the afternoon. This is where most analytics value is won or lost.</p>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+  </div>
+
+  <section id="about" style="max-width: 1240px; margin: 0 auto; padding: clamp(64px,8vw,112px) clamp(20px,5vw,64px) clamp(48px,6vw,80px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: clamp(32px,6vw,96px); align-items: center">
+    <div>
+      <span style="display: block; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 20px" data-i18n="aboutKicker">Sobre mí</span>
+      <h2 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(34px,4.5vw,60px); line-height: 1.02; text-transform: uppercase; margin: 0 0 24px; color: var(--color-accent-900); max-width: 12ch" data-i18n="aboutTitle">La persona detrás de las decisiones</h2>
+      <p style="font-size: 17px; line-height: 1.75; margin: 0 0 18px; color: var(--color-neutral-800)" data-i18n="aboutText1">Soy Aarón Ayllón Benítez, doctor en Informática y especialista en inteligencia artificial. Mi trabajo consiste en convertir ambición tecnológica en decisiones que una organización pueda sostener.</p>
+      <p style="font-size: 17px; line-height: 1.75; margin: 0; color: var(--color-neutral-800)" data-i18n="aboutText2">He trabajado entre la investigación, el código y la dirección de negocio. Por eso mi asesoramiento empieza con la realidad: qué problema merece resolverse, qué equipo puede hacerlo y cómo sabremos si la inversión funciona.</p>
+    </div>
+    <div class="about-image" style="min-height: 280px; display: flex; align-items: flex-end; justify-content: center; overflow: hidden">
+      <img src="Aaron_sin_fondo.png" alt="Aarón Ayllón Benítez" style="display: block; width: min(100%, 260px); max-height: 360px; object-fit: contain; object-position: bottom center" />
+    </div>
+  </section>
+
+  <section id="contact" style="background: var(--color-accent-900); color: var(--color-bg); margin-top: clamp(40px,5vw,72px)">
+    <div style="max-width: 1240px; margin: 0 auto; padding: clamp(56px,7vw,96px) clamp(20px,5vw,64px); display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(32px,5vw,80px); align-items: start">
+      <div>
+        <span style="display: block; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-accent-400); margin-bottom: 20px" data-i18n="contactKicker">Contact</span>
+        <h2 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(34px,4.6vw,60px); line-height: 1; text-transform: uppercase; letter-spacing: -0.01em; margin: 0" data-i18n="closeLine1">Tell me what you are trying to decide</h2>
+        <p style="font-size: 15.5px; line-height: 1.7; max-width: 50ch; margin: 28px 0 0; color: var(--color-accent-200)" data-i18n="contactText">Describe the decision in front of you — a platform you are unsure about, a vendor shortlist, a team that is not delivering. You get a reply within two working days, and a straight answer about whether I am the right person for it.</p>
+        <p style="font-size: 15.5px; line-height: 1.7; margin: 24px 0 0"><a href="mailto:ayllonbenitez.aaron@gmail.com" style="color: var(--color-accent-300)">ayllonbenitez.aaron@gmail.com</a></p>
+      </div>
+      <form onSubmit="{{ onSubmit }}" style="display: grid; gap: 18px">
+        <div class="field">
+          <label for="at2-name" style="color: var(--color-accent-200)" data-i18n="fName">Name</label>
+          <input class="input" id="at2-name" name="name" type="text" required="{{ true }}" style="background: color-mix(in srgb, var(--color-bg) 8%, transparent); border-color: color-mix(in srgb, var(--color-bg) 35%, transparent); color: var(--color-bg)" />
+        </div>
+        <div class="field">
+          <label for="at2-email" style="color: var(--color-accent-200)" data-i18n="fEmail">Email</label>
+          <input class="input" id="at2-email" name="email" type="email" required="{{ true }}" style="background: color-mix(in srgb, var(--color-bg) 8%, transparent); border-color: color-mix(in srgb, var(--color-bg) 35%, transparent); color: var(--color-bg)" />
+        </div>
+        <div class="field">
+          <label for="at2-org" style="color: var(--color-accent-200)" data-i18n="fOrg">Organisation</label>
+          <input class="input" id="at2-org" name="org" type="text" style="background: color-mix(in srgb, var(--color-bg) 8%, transparent); border-color: color-mix(in srgb, var(--color-bg) 35%, transparent); color: var(--color-bg)" />
+        </div>
+        <div class="field">
+          <label for="at2-msg" style="color: var(--color-accent-200)" data-i18n="fMsg">What are you trying to decide?</label>
+          <textarea class="input" id="at2-msg" name="message" rows="5" style="resize: vertical; background: color-mix(in srgb, var(--color-bg) 8%, transparent); border-color: color-mix(in srgb, var(--color-bg) 35%, transparent); color: var(--color-bg)"></textarea>
+        </div>
+        <div style="display: flex; gap: var(--space-3); align-items: center; flex-wrap: wrap">
+          <button class="btn btn-primary blueprint" type="submit" data-i18n="fSend" style="white-space: nowrap; flex: 0 0 auto"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>Send enquiry</button>
+          <span style="font-size: 13px; line-height: 1.5; color: var(--color-accent-300)" data-i18n="fNote">Opens your mail client with the message filled in.</span>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <footer style="max-width: 1240px; margin: 0 auto; padding: 32px clamp(20px,5vw,64px) 48px; font-size: 13px; line-height: 1.8; display: flex; flex-wrap: wrap; gap: 8px 32px; color: var(--color-neutral-700)">
+    <span data-i18n="footBrand">Ayllon Tech Advisory (AT Advisory) · Madrid, Spain</span>
+    <a href="https://aaronayllonbenitez.es" target="_blank" rel="noopener" data-i18n="footLink">aaronayllonbenitez.es ↗</a>
+    <a href="https://www.linkedin.com/in/aar%C3%B3n-ayll%C3%B3n-ben%C3%ADtez-ph-d-b5599158/" target="_blank" rel="noopener">LinkedIn ↗</a>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;defaultLanguage&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;es&quot;,&quot;en&quot;,&quot;fr&quot;],&quot;default&quot;:&quot;es&quot;,&quot;tsType&quot;:&quot;'en' | 'es' | 'fr'&quot;,&quot;section&quot;:&quot;Page&quot;},&quot;showPrinciples&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Page&quot;},&quot;contactEmail&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;ayllonbenitez.aaron@gmail.com&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contact&quot;}}">
+const I18N = {
+  es: {
+    navAbout: "Sobre mí", navServices: "Servicios", navAudience: "Para quién", navEngagement: "Cómo trabajamos", navContact: "Contacto",
+    navCta: "Hablemos",
+    heroKicker: "Ayllon Tech Advisory · Madrid",
+    heroLine1: "Carteras de IA que justifican",
+    heroLine2: "su presupuesto.",
+    heroSub: "Ayllon Tech Advisory — Aarón Ayllón Benítez, PhD. Dirijo plataformas corporativas de IA y ML en BASF Digital Solutions: qué se construye, qué se escala, qué se traspasa a un mejor propietario y qué se cierra. Aplico la misma disciplina en empresas medianas, scale-ups y programas de financiación pública.",
+    heroCta1: "Reservar una jornada de asesoría", heroCta2: "Ver los servicios",
+    credLabel1: "Formación", credText1: "Doctor en Informática · Máster en Inteligencia Artificial",
+    credLabel2: "Corporativo", credText2: "Responsable de plataformas corporativas de IA y ML en BASF Digital Solutions",
+    credLabel3: "Investigación", credText3: "Publicaciones en aprendizaje automático, ontologías y grafos de conocimiento",
+    credLabel4: "Manos a la obra", credText4: "Sigo escribiendo código en producción como cofundador de una plataforma B2B",
+    aboutKicker: "Sobre mí",
+    aboutTitle: "La persona detrás de las decisiones",
+    aboutText1: "Soy Aarón Ayllón Benítez, doctor en Informática y especialista en inteligencia artificial. Mi trabajo consiste en convertir ambición tecnológica en decisiones que una organización pueda sostener.",
+    aboutText2: "He trabajado entre la investigación, el código y la dirección de negocio. Por eso mi asesoramiento empieza con la realidad: qué problema merece resolverse, qué equipo puede hacerlo y cómo sabremos si la inversión funciona.",
+    servicesKicker: "Lo que hago",
+    servicesTitle: "Cuatro cosas por las que merece la pena pagar a alguien de fuera",
+    svc1Title: "Revisión y racionalización de la cartera de IA",
+    svc1Text: "Una lectura estructurada de cada iniciativa de IA y datos que financias: qué merece más inversión, qué corresponde a otro propietario y qué debería cerrarse. He tomado las tres decisiones sobre plataformas propias y las he defendido ante la dirección.",
+    svc2Title: "Implantación de MLOps y plantillas reutilizables",
+    svc2Text: "La fontanería que hace que el segundo proyecto cueste menos que el primero: pipelines estandarizados, una librería de plantillas revisada por pares y una adopción medida por usuarios activos y tiempo ahorrado, no por presentaciones.",
+    svc3Title: "Decisiones build-vs-buy y evaluación de proveedores",
+    svc3Text: "Diseño de pruebas de concepto, comparativa de herramientas competidoras y una recomendación escrita que puedes llevar a quien aprueba el presupuesto — incluyendo modelos de entrega y colaboración, no solo precios de licencia.",
+    svc4Title: "Construcción de equipo, contratación y mentoría",
+    svc4Text: "Planes de contratación, diseño de entrevistas, planes de carrera y acompañamiento a los managers que te reportan — incluidas las conversaciones de bajo rendimiento que la mayoría de organizaciones esquiva.",
+    audKicker: "Para quién",
+    aud1Title: "Empresas medianas",
+    aud1Text: "Datos suficientes para importar, pero no personas suficientes para sostener un equipo de plataforma. Te ayudo a elegir lo poco que merece industrializarse y a dejar de pagar el resto.",
+    aud2Title: "Startups y scale-ups",
+    aud2Text: "Profundidad técnica a demanda para fundadores: revisión de arquitectura y de modelos, cimientos de MLOps y una lectura honesta de lo que tus promesas de IA pueden sostener.",
+    aud3Title: "Sector público y programas europeos",
+    aud3Text: "Diseño de paquetes de trabajo, gobernanza y estándares semánticos para consorcios — de alguien que ha escrito y publicado un modelo de gobernanza de ontologías, no solo citado uno.",
+    engKicker: "Cómo trabajamos",
+    eng1Tag: "Una jornada", eng1Title: "Jornada de asesoría / diagnóstico",
+    eng1Text: "Un único día, en remoto o presencial, sobre una decisión que tienes que tomar. Te quedas con la recomendación por escrito.",
+    eng2Tag: "Semanas", eng2Title: "Proyecto de alcance cerrado",
+    eng2Text: "Un entregable definido en pocas semanas: revisión de cartera, comparativa de proveedores, plano de plataforma o plan de contratación.",
+    eng3Tag: "Días al mes", eng3Title: "Liderazgo de IA fraccional",
+    eng3Text: "Presencia recurrente como el responsable de IA que aún no tienes — habitualmente entre dos y cuatro días al mes, guiando la hoja de ruta y al equipo.",
+    engNote: "La capacidad está deliberadamente limitada a entre dos y cuatro días al mes, en paralelo a un puesto de plataforma a tiempo completo, de modo que los encargos se dimensionan alrededor de decisiones y no de dotación de personal. Idiomas de trabajo: español, inglés y francés. Base en Madrid, en remoto por toda Europa.",
+    prKicker: "Cómo decido",
+    pr1Title: "Construir el equipo, no solo el backlog",
+    pr1Text: "Contratación deliberada, planes de carrera individuales y acompañamiento a los managers que reportan al puesto — incluidas las conversaciones difíciles, porque el techo de un equipo lo marca su eslabón más débil.",
+    pr2Title: "Estar dispuesto a matar tu propio producto",
+    pr2Text: "Recomendé cerrar una plataforma de la que era responsable cuando el retorno y la adopción dejaron de sostenerla, y traspasé otra a un propietario más adecuado — ambas decisiones defendidas con números ante la dirección.",
+    pr3Title: "Traducir entre dos mundos",
+    pr3Text: "Discutir decisiones de modelado con ingenieros de ML por la mañana y plantear el mismo problema como caso de negocio para la dirección por la tarde. Ahí se gana o se pierde la mayor parte del valor analítico.",
+    closeLine1: "Cuéntame qué tienes que decidir",
+    contactKicker: "Contacto",
+    contactText: "Describe la decisión que tienes delante: una plataforma que no sabes si mantener, una lista corta de proveedores, un equipo que no entrega. Recibes respuesta en dos días laborables y una opinión franca sobre si soy la persona adecuada.",
+    fName: "Nombre", fEmail: "Correo electrónico", fOrg: "Organización",
+    fMsg: "¿Qué tienes que decidir?", fSend: "Enviar consulta",
+    fNote: "Abre tu cliente de correo con el mensaje ya redactado.",
+    footBrand: "Ayllon Tech Advisory (AT Advisory) · Madrid, España"
+  },
+  en: {
+    navAbout: "About me",
+    aboutKicker: "About me",
+    aboutTitle: "The person behind the decisions",
+    aboutText1: "I am Aarón Ayllón Benítez, a PhD in Computer Science and an artificial intelligence specialist. My work is about turning technological ambition into decisions an organisation can sustain.",
+    aboutText2: "I have worked between research, code and business leadership. That is why my advice starts with reality: which problem deserves solving, which team can solve it and how we will know the investment is working."
+  },
+  fr: {
+    navAbout: "À propos", navServices: "Services", navAudience: "Pour qui", navEngagement: "Comment travailler", navContact: "Contact",
+    navCta: "Prendre contact",
+    heroKicker: "Ayllon Tech Advisory · Madrid",
+    heroLine1: "Des portefeuilles d'IA qui",
+    heroLine2: "justifient leur budget.",
+    heroSub: "Ayllon Tech Advisory — Aarón Ayllón Benítez, PhD. Je pilote les plateformes d'IA et de ML d'entreprise chez BASF Digital Solutions : ce qui se construit, ce qui se met à l'échelle, ce qui se transmet à un meilleur propriétaire et ce qui s'arrête. J'applique la même discipline aux entreprises de taille intermédiaire, aux scale-ups et aux programmes financés par des fonds publics.",
+    heroCta1: "Réserver une journée de conseil", heroCta2: "Voir les services",
+    credLabel1: "Formation", credText1: "Doctorat en informatique · Master en intelligence artificielle",
+    credLabel2: "Entreprise", credText2: "Responsable des plateformes d'IA et de ML d'entreprise chez BASF Digital Solutions",
+    credLabel3: "Recherche", credText3: "Publications en apprentissage automatique, ontologies et graphes de connaissances",
+    credLabel4: "Sur le terrain", credText4: "Toujours du code en production, comme cofondateur d'une plateforme B2B",
+    aboutKicker: "À propos",
+    aboutTitle: "La personne derrière les décisions",
+    aboutText1: "Je suis Aarón Ayllón Benítez, docteur en informatique et spécialiste de l'intelligence artificielle. Mon travail consiste à transformer l'ambition technologique en décisions qu'une organisation peut réellement soutenir.",
+    aboutText2: "J'ai travaillé entre la recherche, le code et la direction d'entreprise. C'est pourquoi mes conseils partent de la réalité : quel problème mérite d'être résolu, quelle équipe peut le faire et comment mesurer le retour sur investissement.",
+    servicesKicker: "Ce que je fais",
+    servicesTitle: "Quatre sujets qui méritent un regard extérieur",
+    svc1Title: "Revue et rationalisation du portefeuille d'IA",
+    svc1Text: "Une lecture structurée de chaque initiative d'IA et de données que vous financez : ce qui mérite davantage, ce qui revient à un autre propriétaire et ce qu'il faut arrêter. J'ai pris ces trois décisions sur mes propres plateformes et je les ai défendues devant la direction.",
+    svc2Title: "Mise en place du MLOps et bibliothèque de modèles",
+    svc2Text: "La plomberie qui rend le deuxième projet moins coûteux que le premier : des pipelines standardisés, une bibliothèque de modèles revue par les pairs et une adoption mesurée par les utilisateurs actifs et le temps gagné, pas par des présentations.",
+    svc3Title: "Décisions build-vs-buy et évaluation des fournisseurs",
+    svc3Text: "Conception de preuves de concept, comparatif des outils concurrents et une recommandation écrite à présenter au décideur budgétaire — modèles de livraison et de partenariat inclus, pas seulement les tarifs de licence.",
+    svc4Title: "Construction d'équipe, recrutement et mentorat",
+    svc4Text: "Plans de recrutement, conception des entretiens, parcours de carrière et accompagnement des managers qui vous rapportent — y compris les conversations sur la sous-performance que la plupart des organisations contournent.",
+    audKicker: "Pour qui",
+    aud1Title: "Entreprises de taille intermédiaire",
+    aud1Text: "Assez de données pour que cela compte, pas assez de personnes pour tenir une équipe plateforme. Je vous aide à choisir le peu qui mérite d'être industrialisé et à arrêter de payer le reste.",
+    aud2Title: "Startups et scale-ups",
+    aud2Text: "De la profondeur technique à la demande pour les fondateurs : revues d'architecture et de modèles, fondations MLOps et une lecture honnête de ce que vos promesses d'IA peuvent tenir.",
+    aud3Title: "Secteur public et programmes européens",
+    aud3Text: "Conception des lots de travail, gouvernance et standards sémantiques pour les consortiums — par quelqu'un qui a écrit et publié un modèle de gouvernance des ontologies, pas seulement cité un.",
+    engKicker: "Comment travailler",
+    eng1Tag: "Une journée", eng1Title: "Journée de conseil / diagnostic",
+    eng1Text: "Une seule journée, à distance ou sur site, sur une décision à prendre. Vous repartez avec la recommandation écrite.",
+    eng2Tag: "Semaines", eng2Title: "Projet à périmètre fixe",
+    eng2Text: "Un livrable défini en quelques semaines : revue de portefeuille, comparatif de fournisseurs, plan de plateforme ou plan de recrutement.",
+    eng3Tag: "Jours par mois", eng3Title: "Direction IA fractionnée",
+    eng3Text: "Une présence récurrente comme le responsable IA que vous n'avez pas encore — généralement deux à quatre jours par mois, pour piloter la feuille de route et les équipes.",
+    engNote: "La capacité est délibérément limitée à deux à quatre jours par mois, en parallèle d'un poste plateforme à temps plein : les missions sont donc cadrées autour de décisions, pas de renfort d'effectifs. Langues de travail : espagnol, anglais et français. Basé à Madrid, à distance partout en Europe.",
+    prKicker: "Comment je décide",
+    pr1Title: "Construire l'équipe, pas seulement le backlog",
+    pr1Text: "Un recrutement délibéré, des parcours individuels et l'accompagnement des managers rattachés au poste — y compris les conversations difficiles, car le plafond d'une équipe est fixé par son maillon le plus faible.",
+    pr2Title: "Savoir arrêter son propre produit",
+    pr2Text: "J'ai recommandé la fermeture d'une plateforme dont j'étais responsable dès que le retour et l'adoption ne la soutenaient plus, et j'en ai transféré une autre à un propriétaire mieux placé — deux décisions défendues avec des chiffres devant la direction.",
+    pr3Title: "Traduire entre deux mondes",
+    pr3Text: "Discuter des choix de modèles avec les ingénieurs ML le matin et présenter le même problème comme un dossier d'investissement l'après-midi. C'est là que se gagne ou se perd l'essentiel de la valeur analytique.",
+    closeLine1: "Dites-moi ce que vous devez décider",
+    contactKicker: "Contact",
+    contactText: "Décrivez la décision devant vous : une plateforme dont vous doutez, une liste de fournisseurs, une équipe qui ne livre pas. Réponse sous deux jours ouvrés, et un avis franc sur le fait que je sois ou non la bonne personne.",
+    fName: "Nom", fEmail: "E-mail", fOrg: "Organisation",
+    fMsg: "Que devez-vous décider ?", fSend: "Envoyer la demande",
+    fNote: "Ouvre votre messagerie avec le message pré-rempli.",
+    footBrand: "Ayllon Tech Advisory (AT Advisory) · Madrid, Espagne"
+  }
+};
+
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.rootRef = React.createRef();
+    this.base = null;
+    this.lang = 'es';
+  }
+
+  componentDidMount() {
+    const start = this.props.defaultLanguage || 'es';
+    if (start !== 'en') this.apply(start);
+    else this.mark('en');
+  }
+
+  snapshot() {
+    if (this.base) return;
+    this.base = new Map();
+    const root = this.rootRef.current;
+    if (!root) return;
+    root.querySelectorAll('[data-i18n]').forEach((el) => {
+      this.base.set(el.getAttribute('data-i18n'), el.textContent);
+    });
+  }
+
+  mark(code) {
+    const root = this.rootRef.current;
+    if (!root) return;
+    root.querySelectorAll('img[data-lang]').forEach((img) => {
+      const on = img.getAttribute('data-lang') === code;
+      img.style.outline = on ? '2px solid var(--color-accent)' : 'none';
+      img.style.outlineOffset = '2px';
+      img.style.opacity = on ? '1' : '0.5';
+    });
+  }
+
+  apply(code) {
+    this.snapshot();
+    const root = this.rootRef.current;
+    if (!root) return;
+    const dict = I18N[code];
+    root.querySelectorAll('[data-i18n]').forEach((el) => {
+      const key = el.getAttribute('data-i18n');
+      const val = dict ? dict[key] : this.base.get(key);
+      if (val != null) el.textContent = val;
+      else if (this.base.has(key)) el.textContent = this.base.get(key);
+    });
+    this.lang = code;
+    this.mark(code);
+  }
+
+  renderVals() {
+    return {
+      rootRef: this.rootRef,
+      showPrinciples: this.props.showPrinciples ?? true,
+      onLang: (e) => this.apply(e.currentTarget.getAttribute('data-lang')),
+      onSubmit: (e) => {
+        e.preventDefault();
+        const f = e.currentTarget;
+        const get = (n) => (f.elements[n] ? f.elements[n].value : '');
+        const to = this.props.contactEmail || 'ayllonbenitez.aaron@gmail.com';
+        const subject = 'AT Advisory enquiry — ' + (get('org') || get('name'));
+        const body = [
+          'Name: ' + get('name'),
+          'Email: ' + get('email'),
+          'Organisation: ' + get('org'),
+          '',
+          get('message')
+        ].join('\n');
+        window.location.href = 'mailto:' + to + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>
