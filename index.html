@@ -11,6 +11,26 @@
   a { color: var(--color-accent-700); text-decoration: none; }
   a:hover { color: var(--color-accent-800); text-decoration: underline; }
   @media (max-width: 700px) { .about-image { display: none !important; } }
+  .nav-toggle-control { position: absolute; opacity: 0; pointer-events: none; }
+  .nav-toggle-label { display: none; cursor: pointer; font-size: 0; }
+  .nav-toggle-label::before, .nav-toggle-label::after, .nav-toggle-label span { content: ""; display: block; width: 20px; height: 2px; margin: 4px 0; background: currentColor; }
+  .nav-menu { display: flex; align-items: center; gap: var(--space-3); }
+  .language-picker { position: relative; margin-left: 4px; }
+  .language-picker summary { list-style: none; cursor: pointer; display: block; }
+  .language-picker summary::-webkit-details-marker { display: none; }
+  .language-current { display: block; }
+  .language-current img { display: block; }
+  .language-options { position: absolute; top: calc(100% + 8px); right: 0; z-index: 10; display: grid; gap: 8px; padding: 10px; background: var(--color-bg); border: 1px solid var(--color-divider); }
+  .language-options img { display: block; cursor: pointer; }
+  @media (max-width: 760px) {
+    .nav { flex-wrap: wrap; gap: 12px; }
+    .nav-toggle-label { display: inline-block; margin-left: auto; padding: 8px 10px; }
+    .nav-menu { display: none; flex-basis: 100%; flex-direction: column; align-items: stretch; gap: 14px; padding: 16px 0 8px; border-top: 1px solid var(--color-divider); }
+    .nav-toggle-control:checked ~ .nav-menu { display: flex; }
+    .nav-menu > a { width: 100%; }
+    .language-picker { margin-left: 0; }
+    .language-options { right: auto; left: 0; }
+  }
 </style>
 <script src="./support.js"></script>
 </head>
@@ -22,17 +42,24 @@
 
   <nav class="nav" style="padding-inline: max(clamp(20px,5vw,64px), calc((100% - 1240px) / 2 + clamp(20px,5vw,64px)))">
     <span class="nav-brand" style="white-space: nowrap; color: var(--color-accent-900)">AT ADVISORY</span>
-    <a href="#about" data-i18n="navAbout">About me</a>
-    <a href="#services" data-i18n="navServices">Services</a>
-    <a href="#audience" data-i18n="navAudience">Who it's for</a>
-    <a href="#engagement" data-i18n="navEngagement">How we work</a>
-    <a href="#contact" data-i18n="navContact">Contact</a>
-    <span style="display: flex; gap: 6px; align-items: center; margin-left: 4px">
-      <img src="flags/es.svg" alt="Español" width="24" data-lang="es" onClick="{{ onLang }}" style="cursor: pointer; display: block" />
-      <img src="flags/gb.svg" alt="English" width="24" data-lang="en" onClick="{{ onLang }}" style="cursor: pointer; display: block" />
-      <img src="flags/fr.svg" alt="Français" width="24" data-lang="fr" onClick="{{ onLang }}" style="cursor: pointer; display: block" />
-    </span>
-    <a href="#contact" class="btn btn-primary" data-i18n="navCta" style="text-decoration: none; white-space: nowrap; flex: 0 0 auto">Start a conversation</a>
+    <input class="nav-toggle-control" id="nav-toggle" type="checkbox" />
+    <label class="nav-toggle-label btn btn-ghost" for="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></label>
+    <div class="nav-menu">
+      <a href="#about" data-i18n="navAbout">About me</a>
+      <a href="#services" data-i18n="navServices">Services</a>
+      <a href="#audience" data-i18n="navAudience">Who it's for</a>
+      <a href="#engagement" data-i18n="navEngagement">How we work</a>
+      <a href="#contact" data-i18n="navContact">Contact</a>
+    </div>
+    <details class="language-picker">
+      <summary class="language-current" aria-label="Language"><img src="flags/es.svg" alt="Español" width="24" data-current-lang /></summary>
+      <div class="language-options">
+        <img src="flags/es.svg" alt="Español" width="24" data-lang="es" onClick="{{ onLang }}" />
+        <img src="flags/gb.svg" alt="English" width="24" data-lang="en" onClick="{{ onLang }}" />
+        <img src="flags/fr.svg" alt="Français" width="24" data-lang="fr" onClick="{{ onLang }}" />
+      </div>
+    </details>
+    <a href="#contact" class="nav-cta btn btn-primary" data-i18n="navCta" style="text-decoration: none; white-space: nowrap; flex: 0 0 auto">Start a conversation</a>
   </nav>
 
   <section style="background: var(--color-accent-900); color: var(--color-bg)">
@@ -222,7 +249,7 @@
 <script type="text/x-dc" data-dc-script data-props="{&quot;defaultLanguage&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;es&quot;,&quot;en&quot;,&quot;fr&quot;],&quot;default&quot;:&quot;es&quot;,&quot;tsType&quot;:&quot;'en' | 'es' | 'fr'&quot;,&quot;section&quot;:&quot;Page&quot;},&quot;showPrinciples&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Page&quot;},&quot;contactEmail&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;ayllonbenitez.aaron@gmail.com&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contact&quot;}}">
 const I18N = {
   es: {
-    navAbout: "Sobre mí", navServices: "Servicios", navAudience: "Para quién", navEngagement: "Cómo trabajamos", navContact: "Contacto",
+    navMenu: "Menú", navAbout: "Sobre mí", navServices: "Servicios", navAudience: "Para quién", navEngagement: "Cómo trabajamos", navContact: "Contacto",
     navCta: "Hablemos",
     heroKicker: "Ayllon Tech Advisory · Madrid",
     heroLine1: "Carteras de IA que justifican",
@@ -278,14 +305,14 @@ const I18N = {
     footBrand: "Ayllon Tech Advisory (AT Advisory) · Madrid, España"
   },
   en: {
-    navAbout: "About me",
+    navMenu: "Menu", navAbout: "About me",
     aboutKicker: "About me",
     aboutTitle: "The person behind the decisions",
     aboutText1: "I am Aarón Ayllón Benítez, a PhD in Computer Science and an artificial intelligence specialist. My work is about turning technological ambition into decisions an organisation can sustain.",
     aboutText2: "I have worked between research, code and business leadership. That is why my advice starts with reality: which problem deserves solving, which team can solve it and how we will know the investment is working."
   },
   fr: {
-    navAbout: "À propos", navServices: "Services", navAudience: "Pour qui", navEngagement: "Comment travailler", navContact: "Contact",
+    navMenu: "Menu", navAbout: "À propos", navServices: "Services", navAudience: "Pour qui", navEngagement: "Comment travailler", navContact: "Contact",
     navCta: "Prendre contact",
     heroKicker: "Ayllon Tech Advisory · Madrid",
     heroLine1: "Des portefeuilles d'IA qui",
@@ -369,6 +396,12 @@ class Component extends DCLogic {
   mark(code) {
     const root = this.rootRef.current;
     if (!root) return;
+    const current = root.querySelector('[data-current-lang]');
+    const flag = code === 'en' ? 'gb' : code;
+    if (current) {
+      current.src = 'flags/' + flag + '.svg';
+      current.alt = code === 'es' ? 'Español' : code === 'en' ? 'English' : 'Français';
+    }
     root.querySelectorAll('img[data-lang]').forEach((img) => {
       const on = img.getAttribute('data-lang') === code;
       img.style.outline = on ? '2px solid var(--color-accent)' : 'none';
