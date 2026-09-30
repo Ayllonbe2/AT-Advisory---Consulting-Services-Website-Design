@@ -42,6 +42,11 @@
   .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(20px,2.5vw,32px); }
   @media (max-width: 1000px) { .svc-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 640px) { .svc-grid { grid-template-columns: 1fr; } }
+  h1, h2, h3 { text-wrap: balance; }
+  p, li { text-wrap: pretty; }
+  .eng-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px clamp(24px,3vw,48px); margin-top: clamp(28px,3vw,40px); padding-top: 20px; border-top: 1px solid var(--color-divider); }
+  @media (max-width: 760px) { .eng-facts { grid-template-columns: 1fr; } }
+  .card .tag { align-self: flex-start; }
 </style>
 <script src="./support.js"></script>
 </head>
@@ -246,7 +251,20 @@
           <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="eng3Text">Close follow-up of the indicators and a quarterly review with leadership — usually two to four days a month — to adjust course in time.</p>
         </div>
       </div>
-      <p style="font-size: 15.5px; line-height: 1.7; margin: clamp(28px,3vw,40px) 0 0; max-width: 64ch; color: var(--color-neutral-700)" data-i18n="engNote">Capacity is deliberately limited to two to four days a month alongside a full-time platform role, so engagements are scoped around decisions rather than staffing. Working languages: Spanish, English and French. Based in Madrid, remote across Europe.</p>
+      <div class="eng-facts">
+        <div>
+          <div style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 8px" data-i18n="engFact1Label">Availability</div>
+          <div style="font-size: 15.5px; line-height: 1.6; color: var(--color-neutral-800)" data-i18n="engFact1">Two to four days a month, so each project gets the attention it deserves</div>
+        </div>
+        <div>
+          <div style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 8px" data-i18n="engFact2Label">Languages</div>
+          <div style="font-size: 15.5px; line-height: 1.6; color: var(--color-neutral-800)" data-i18n="engFact2">Spanish, English and French</div>
+        </div>
+        <div>
+          <div style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 8px" data-i18n="engFact3Label">Location</div>
+          <div style="font-size: 15.5px; line-height: 1.6; color: var(--color-neutral-800)" data-i18n="engFact3">Based in Madrid, working remotely across Europe</div>
+        </div>
+      </div>
     </section>
 
     <sc-if value="{{ showPrinciples }}" hint-placeholder-val="{{ true }}">
@@ -381,7 +399,9 @@ const I18N = {
     eng2Text: "Unas semanas para recorrer toda la cartera: cuadro de mando, recomendación por producto, estimación de ahorro y hoja de ruta — construida junto a tu equipo.",
     eng3Tag: "Días al mes", eng3Title: "Acompañamiento continuo",
     eng3Text: "Un seguimiento cercano de los indicadores y una revisión trimestral con la dirección — normalmente entre dos y cuatro días al mes — para ajustar el rumbo a tiempo.",
-    engNote: "La capacidad está deliberadamente limitada a entre dos y cuatro días al mes, en paralelo a un puesto de plataforma a tiempo completo, de modo que los encargos se dimensionan alrededor de decisiones y no de dotación de personal. Idiomas de trabajo: español, inglés y francés. Base en Madrid, en remoto por toda Europa.",
+    engFact1Label: "Disponibilidad", engFact1: "Entre dos y cuatro días al mes, para dar a cada proyecto la atención que merece",
+    engFact2Label: "Idiomas", engFact2: "Español, inglés y francés",
+    engFact3Label: "Ubicación", engFact3: "Desde Madrid, en remoto por toda Europa",
     prKicker: "Lo que me guía",
     pr1Title: "Datos claros, trato humano",
     pr1Text: "Detrás de cada producto hay personas que han puesto su esfuerzo en él. Los datos orientan la decisión; el respeto por ese trabajo marca cómo la llevamos a cabo.",
@@ -457,7 +477,9 @@ const I18N = {
     eng2Text: "Quelques semaines pour parcourir tout le portefeuille : tableau de bord, recommandation par produit, estimation des économies et feuille de route — construite avec votre équipe.",
     eng3Tag: "Jours par mois", eng3Title: "Accompagnement continu",
     eng3Text: "Un suivi attentif des indicateurs et une revue trimestrielle avec la direction — généralement deux à quatre jours par mois — pour ajuster le cap à temps.",
-    engNote: "La capacité est délibérément limitée à deux à quatre jours par mois, en parallèle d'un poste plateforme à temps plein : les missions sont donc cadrées autour de décisions, pas de renfort d'effectifs. Langues de travail : espagnol, anglais et français. Basé à Madrid, à distance partout en Europe.",
+    engFact1Label: "Disponibilité", engFact1: "Deux à quatre jours par mois, pour accorder à chaque projet l'attention qu'il mérite",
+    engFact2Label: "Langues", engFact2: "Espagnol, anglais et français",
+    engFact3Label: "Localisation", engFact3: "Basé à Madrid, à distance partout en Europe",
     prKicker: "Ce qui me guide",
     pr1Title: "Des données claires, une approche humaine",
     pr1Text: "Derrière chaque produit, il y a des personnes qui y ont mis leurs efforts. Les données orientent la décision ; le respect de ce travail guide la manière de la mettre en œuvre.",
@@ -475,6 +497,19 @@ const I18N = {
   }
 };
 
+const noWidow = (t) => {
+  const words = t.trim().split(/\s+/);
+  if (words.length < 4 || words[words.length - 1].length > 12) return t;
+  return t.replace(/\s+(\S+)\s*$/, '\u00A0$1');
+};
+
+const setText = (el, t) => {
+  if (!el.children.length) { el.textContent = t; return; }
+  const nodes = [...el.childNodes].filter((n) => n.nodeType === 3 && n.textContent.trim());
+  if (nodes.length) nodes[nodes.length - 1].textContent = t;
+  else el.appendChild(document.createTextNode(t));
+};
+
 class Component extends DCLogic {
   constructor(props) {
     super(props);
@@ -485,8 +520,7 @@ class Component extends DCLogic {
 
   componentDidMount() {
     const start = this.props.defaultLanguage || 'es';
-    if (start !== 'en') this.apply(start);
-    else this.mark('en');
+    this.apply(start);
   }
 
   snapshot() {
@@ -524,8 +558,8 @@ class Component extends DCLogic {
     root.querySelectorAll('[data-i18n]').forEach((el) => {
       const key = el.getAttribute('data-i18n');
       const val = dict ? dict[key] : this.base.get(key);
-      if (val != null) el.textContent = val;
-      else if (this.base.has(key)) el.textContent = this.base.get(key);
+      if (val != null) setText(el, noWidow(val));
+      else if (this.base.has(key)) setText(el, noWidow(this.base.get(key)));
     });
     this.lang = code;
     this.mark(code);
