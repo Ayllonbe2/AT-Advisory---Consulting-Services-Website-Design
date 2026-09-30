@@ -35,6 +35,9 @@
   .verdict-signals li { position: relative; padding-left: 18px; }
   .verdict-signals li::before { content: ""; position: absolute; left: 0; top: 0.6em; width: 8px; height: 1px; background: currentColor; }
   @media (max-width: 600px) { .kpi-row { grid-template-columns: 1fr !important; } }
+  .aud-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(24px,3vw,40px); }
+  @media (max-width: 1000px) { .aud-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .aud-grid { grid-template-columns: 1fr; } }
 </style>
 <script src="./support.js"></script>
 </head>
@@ -74,7 +77,7 @@
         <span style="display: block" data-i18n="heroLine1">Clear decisions</span>
         <span style="display: block; color: var(--color-accent-400)" data-i18n="heroLine2">for the products you care about.</span>
       </h1>
-      <p style="font-size: 17px; line-height: 1.7; max-width: 62ch; margin: 32px 0 0; color: var(--color-accent-200)" data-i18n="heroSub">I'm Aarón Ayllón Benítez, PhD. I help leaders and teams look at their product portfolio calmly and with data: understanding the value each product brings, where it is growing, where it can become more sustainable, and when the time has come to say goodbye with care — for the people who use it and for those who built it.</p>
+      <p style="font-size: 17px; line-height: 1.7; max-width: 62ch; margin: 32px 0 0; color: var(--color-accent-200)" data-i18n="heroSub">I'm Aarón Ayllón Benítez, PhD. I help companies of every size and sector look at their products and services calmly and with data: understanding the value each one brings, where it is growing, where it can become more sustainable, and when the time has come to say goodbye with care — for the people who use it and for those who built it.</p>
       <div style="display: flex; gap: var(--space-3); flex-wrap: wrap; margin-top: 36px">
         <a href="#contact" class="btn btn-primary blueprint" data-i18n="heroCta1" style="text-decoration: none; white-space: nowrap; flex: 0 0 auto"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>Let's talk about your portfolio</a>
         <a href="#method" class="btn btn-ghost" data-i18n="heroCta2" style="text-decoration: none; white-space: nowrap; flex: 0 0 auto; color: var(--color-bg); border-color: color-mix(in srgb, var(--color-bg) 45%, transparent)">How I work</a>
@@ -124,29 +127,29 @@
           <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
           <div style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-accent-600)" data-i18n="v2Tag">Path 02</div>
           <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 34px; line-height: 1.05; text-transform: uppercase; margin: 12px 0 12px; color: var(--color-accent-900)" data-i18n="v2Title">Make it sustainable</h3>
-          <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="v2Text">The product is valuable, but today it costs more than it should. Together we find ways to lighten it — licences, infrastructure, vendors or scope — without losing what makes it useful.</p>
+          <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="v2Text">The product is valuable, but today it costs more than it should. Together we find ways to lighten it — operating costs, vendors, processes or scope — without losing what makes it useful.</p>
           <ul class="verdict-signals" style="color: var(--color-neutral-800)">
-            <li data-i18n="v2Sig1">High cost per active user</li>
-            <li data-i18n="v2Sig2">Licences or cloud beyond what is needed</li>
-            <li data-i18n="v2Sig3">Features that overlap with other tools</li>
+            <li data-i18n="v2Sig1">High cost for the value it delivers</li>
+            <li data-i18n="v2Sig2">Vendor or operating costs above what is needed</li>
+            <li data-i18n="v2Sig3">Overlaps with other products in the portfolio</li>
           </ul>
         </div>
         <div class="card blueprint verdict" style="padding: clamp(24px,2.6vw,36px); border-style: dashed">
           <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
           <div style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-neutral-600)" data-i18n="v3Tag">Path 03</div>
           <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 34px; line-height: 1.05; text-transform: uppercase; margin: 12px 0 12px; color: var(--color-accent-900)" data-i18n="v3Title">Close with care</h3>
-          <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="v3Text">Sometimes a product has already done its job. When that happens, we plan a respectful transition: supporting users, recognising the team's work and protecting the data, so the change frees up energy instead of creating uncertainty.</p>
+          <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="v3Text">Sometimes a product has already done its job. When that happens, we plan a respectful transition: supporting customers, recognising the team's work and protecting what has been learned, so the change frees up energy instead of creating uncertainty.</p>
           <ul class="verdict-signals" style="color: var(--color-neutral-800)">
-            <li data-i18n="v3Sig1">Usage declining or very residual</li>
+            <li data-i18n="v3Sig1">Declining sales or usage</li>
             <li data-i18n="v3Sig2">No realistic prospect of return</li>
-            <li data-i18n="v3Sig3">A better alternative already exists for users</li>
+            <li data-i18n="v3Sig3">A better alternative already exists for customers</li>
           </ul>
         </div>
       </div>
 
       <div style="margin-top: clamp(32px,4vw,48px); border-top: 1px solid var(--color-divider); padding-top: 20px; display: grid; grid-template-columns: minmax(0, 200px) 1fr; gap: 12px 32px" class="kpi-row">
         <div style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-accent-700); padding-top: 3px" data-i18n="kpiLabel">What we look at</div>
-        <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="kpiList">Adoption and active users · retention · cost per user and per transaction · total cost of ownership (TCO) · ROI and payback · operational and technical-debt burden · vendor dependency · strategic fit.</p>
+        <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="kpiList">Sales, margin and profitability · customers and active usage · retention and satisfaction · cost per customer and per unit · total cost of ownership (TCO) · ROI and payback · operational burden · vendor dependency · strategic fit.</p>
       </div>
     </section>
 
@@ -159,7 +162,7 @@
           <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
           <div style="font-family: var(--font-heading); font-weight: 600; font-size: 40px; line-height: 1; color: var(--color-accent-400)">01</div>
           <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 26px; line-height: 1.12; text-transform: uppercase; margin: 16px 0 12px; color: var(--color-accent-900)" data-i18n="svc1Title">Product portfolio review</h3>
-          <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="svc1Text">Together we go through every product and platform you fund, listening to the people who use and build them. The result is a shared view and a prioritised plan to bring to leadership.</p>
+          <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="svc1Text">Together we go through every product, service or business line you fund, listening to the people who use them and make them possible. The result is a shared view and a prioritised plan to bring to leadership.</p>
         </div>
         <div class="card blueprint" style="padding: clamp(24px,2.6vw,36px)">
           <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
@@ -171,31 +174,36 @@
           <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
           <div style="font-family: var(--font-heading); font-weight: 600; font-size: 40px; line-height: 1; color: var(--color-accent-400)">03</div>
           <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 26px; line-height: 1.12; text-transform: uppercase; margin: 16px 0 12px; color: var(--color-accent-900)" data-i18n="svc3Title">Cost &amp; vendor optimisation</h3>
-          <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="svc3Text">We look at the full cost of each product and find sensible savings: licences, cloud, duplicated tools or contracts worth renegotiating — always with the estimated saving on the table before deciding.</p>
+          <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="svc3Text">We look at the full cost of each product and find sensible savings: vendors, processes, operations or overlapping products — always with the estimated saving on the table before deciding.</p>
         </div>
         <div class="card blueprint" style="padding: clamp(24px,2.6vw,36px)">
           <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
           <div style="font-family: var(--font-heading); font-weight: 600; font-size: 40px; line-height: 1; color: var(--color-accent-400)">04</div>
           <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 26px; line-height: 1.12; text-transform: uppercase; margin: 16px 0 12px; color: var(--color-accent-900)" data-i18n="svc4Title">Thoughtful transitions &amp; closures</h3>
-          <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="svc4Text">Closing a product is also part of its story. I plan transitions that look after users, give the team a meaningful next step, preserve the data and communicate the change openly.</p>
+          <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="svc4Text">Closing a product is also part of its story. I plan transitions that look after customers, give the team a meaningful next step, preserve what has been learned and communicate the change openly.</p>
         </div>
       </div>
     </section>
 
     <section id="audience" style="padding: clamp(40px,5vw,72px) 0">
-      <span style="display: block; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 32px" data-i18n="audKicker">Who it's for</span>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: clamp(24px,3vw,48px)">
+      <span style="display: block; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 16px" data-i18n="audKicker">Who it's for</span>
+      <p style="font-size: 17px; line-height: 1.7; max-width: 64ch; margin: 0 0 32px; color: var(--color-neutral-800)" data-i18n="audIntro">Whatever your size or sector — manufacturing, retail, services, healthcare, technology… If you have products or services to invest in, I can help you decide better.</p>
+      <div class="aud-grid">
         <div style="border-top: 2px solid var(--color-accent-900); padding-top: 20px">
-          <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 1.15; text-transform: uppercase; margin: 0 0 12px; color: var(--color-accent-900)" data-i18n="aud1Title">Leadership teams &amp; CFOs</h3>
-          <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="aud1Text">You want a clear picture of what each product in the technology portfolio contributes, so you can invest with more confidence. I offer an independent, data-based reading.</p>
+          <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 1.15; text-transform: uppercase; margin: 0 0 12px; color: var(--color-accent-900)" data-i18n="aud1Title">Large companies &amp; groups</h3>
+          <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="aud1Text">Broad portfolios, several business units and decisions that affect many people. I offer an independent, data-based reading so you can invest with more confidence.</p>
         </div>
         <div style="border-top: 2px solid var(--color-accent-900); padding-top: 20px">
-          <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 1.15; text-transform: uppercase; margin: 0 0 12px; color: var(--color-accent-900)" data-i18n="aud2Title">Mid-size companies</h3>
-          <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="aud2Text">Over the years, tools, platforms and internal projects pile up. I help you bring order and focus your energy on what adds the most value.</p>
+          <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 1.15; text-transform: uppercase; margin: 0 0 12px; color: var(--color-accent-900)" data-i18n="aud2Title">SMEs &amp; family businesses</h3>
+          <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="aud2Text">Over the years, products, services and projects pile up. I help you bring order and focus your energy — and your budget — on what adds the most value.</p>
         </div>
         <div style="border-top: 2px solid var(--color-accent-900); padding-top: 20px">
-          <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 1.15; text-transform: uppercase; margin: 0 0 12px; color: var(--color-accent-900)" data-i18n="aud3Title">Scale-ups &amp; investors</h3>
-          <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="aud3Text">Gaining focus before the next round, or understanding a product portfolio before investing: where the growth is and where it makes sense to adjust.</p>
+          <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 1.15; text-transform: uppercase; margin: 0 0 12px; color: var(--color-accent-900)" data-i18n="aud3Title">Startups, scale-ups &amp; investors</h3>
+          <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="aud3Text">Gaining focus before the next round, or understanding a portfolio before investing: where the growth is and where it makes sense to adjust.</p>
+        </div>
+        <div style="border-top: 2px solid var(--color-accent-900); padding-top: 20px">
+          <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 1.15; text-transform: uppercase; margin: 0 0 12px; color: var(--color-accent-900)" data-i18n="aud4Title">Public sector &amp; non-profits</h3>
+          <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="aud4Text">Programmes, services and projects funded with limited resources. I help you measure their real impact and direct every euro to where it helps most.</p>
         </div>
       </div>
     </section>
@@ -250,7 +258,7 @@
     <div>
       <span style="display: block; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 20px" data-i18n="aboutKicker">About me</span>
       <h2 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(34px,4.5vw,60px); line-height: 1.02; text-transform: uppercase; margin: 0 0 24px; color: var(--color-accent-900); max-width: 12ch" data-i18n="aboutTitle">The person behind the analysis</h2>
-      <p style="font-size: 17px; line-height: 1.75; margin: 0 0 18px; color: var(--color-neutral-800)" data-i18n="aboutText1">I'm Aarón Ayllón Benítez, a PhD in Computer Science and a product and technology advisor. I enjoy helping organisations understand the real value of what they have built and decide calmly where to put their energy.</p>
+      <p style="font-size: 17px; line-height: 1.75; margin: 0 0 18px; color: var(--color-neutral-800)" data-i18n="aboutText1">I'm Aarón Ayllón Benítez, a PhD in Computer Science and a product and strategy advisor. I enjoy helping organisations understand the real value of what they have built and decide calmly where to put their energy.</p>
       <p style="font-size: 17px; line-height: 1.75; margin: 0; color: var(--color-neutral-800)" data-i18n="aboutText2">I have owned enterprise platforms, created products from scratch and also had to say goodbye to some. That experience taught me that good numbers are necessary, but good decisions are made with people.</p>
     </div>
     <div class="about-image" style="min-height: 280px; display: flex; align-items: flex-end; justify-content: center; overflow: hidden">
@@ -306,7 +314,7 @@ const I18N = {
     heroKicker: "Asesoría de producto y cartera · Madrid",
     heroLine1: "Decisiones claras",
     heroLine2: "para los productos que te importan.",
-    heroSub: "Soy Aarón Ayllón Benítez, PhD. Acompaño a directivos y equipos a mirar su cartera de productos con calma y con datos: entender qué valor aporta cada uno, dónde está creciendo, dónde puede ser más sostenible y cuándo ha llegado el momento de despedirse de él con cuidado — por las personas que lo usan y por quienes lo construyeron.",
+    heroSub: "Soy Aarón Ayllón Benítez, PhD. Acompaño a empresas de cualquier tamaño y sector a mirar sus productos y servicios con calma y con datos: entender qué valor aporta cada uno, dónde está creciendo, dónde puede ser más sostenible y cuándo ha llegado el momento de despedirse de él con cuidado — por las personas que lo usan y por quienes lo construyeron.",
     heroCta1: "Hablemos de tu cartera", heroCta2: "Cómo trabajo",
     credLabel1: "Experiencia vivida", credText1: "He impulsado, traspasado y cerrado productos propios, acompañando a los equipos en cada cambio",
     credLabel2: "Corporativo", credText2: "Responsable de plataformas corporativas de IA y ML en BASF Digital Solutions",
@@ -319,34 +327,35 @@ const I18N = {
     v1Text: "El producto está aportando valor y tiene recorrido. Le damos foco, recursos y objetivos para que siga creciendo.",
     v1Sig1: "Cada vez más personas lo usan", v1Sig2: "Su retorno es claro y medible", v1Sig3: "Encaja con hacia dónde va la empresa",
     v2Tag: "Camino 02", v2Title: "Hacerlo sostenible",
-    v2Text: "El producto es valioso, pero hoy cuesta más de lo que debería. Buscamos juntos cómo aligerarlo — licencias, infraestructura, proveedores o alcance — sin perder lo que lo hace útil.",
-    v2Sig1: "Coste elevado por usuario activo", v2Sig2: "Licencias o cloud por encima de lo necesario", v2Sig3: "Funciones que se solapan con otras herramientas",
+    v2Text: "El producto es valioso, pero hoy cuesta más de lo que debería. Buscamos juntos cómo aligerarlo — costes operativos, proveedores, procesos o alcance — sin perder lo que lo hace útil.",
+    v2Sig1: "Coste elevado para el valor que aporta", v2Sig2: "Proveedores o costes operativos por encima de lo necesario", v2Sig3: "Se solapa con otros productos de la cartera",
     v3Tag: "Camino 03", v3Title: "Cerrar con cuidado",
-    v3Text: "A veces un producto ya ha cumplido su función. Cuando es así, planificamos una transición respetuosa: acompañar a los usuarios, reconocer el trabajo del equipo y proteger los datos, para que el cambio libere energía en lugar de generar incertidumbre.",
-    v3Sig1: "Uso en descenso o muy residual", v3Sig2: "Sin perspectiva realista de retorno", v3Sig3: "Ya existe una alternativa mejor para los usuarios",
+    v3Text: "A veces un producto ya ha cumplido su función. Cuando es así, planificamos una transición respetuosa: acompañar a los clientes, reconocer el trabajo del equipo y conservar lo aprendido, para que el cambio libere energía en lugar de generar incertidumbre.",
+    v3Sig1: "Ventas o uso en descenso", v3Sig2: "Sin perspectiva realista de retorno", v3Sig3: "Ya existe una alternativa mejor para los clientes",
     kpiLabel: "Qué miramos",
-    kpiList: "Adopción y usuarios activos · retención · coste por usuario y por transacción · coste total de propiedad (TCO) · ROI y periodo de retorno · carga operativa y deuda técnica · dependencia de proveedores · encaje estratégico.",
+    kpiList: "Ventas, margen y rentabilidad · clientes y uso activo · retención y satisfacción · coste por cliente y por unidad · coste total de propiedad (TCO) · ROI y periodo de retorno · carga operativa · dependencia de proveedores · encaje estratégico.",
     aboutKicker: "Sobre mí",
     aboutTitle: "La persona detrás del análisis",
-    aboutText1: "Soy Aarón Ayllón Benítez, doctor en Informática y asesor de producto y tecnología. Me gusta ayudar a las organizaciones a entender el valor real de lo que han construido y a decidir con serenidad dónde poner su energía.",
+    aboutText1: "Soy Aarón Ayllón Benítez, doctor en Informática y asesor de producto y estrategia. Me gusta ayudar a las organizaciones a entender el valor real de lo que han construido y a decidir con serenidad dónde poner su energía.",
     aboutText2: "He sido responsable de plataformas corporativas, he creado productos desde cero y también he tenido que despedirme de alguno. Esa experiencia me enseñó que los buenos números son necesarios, pero que las buenas decisiones se toman con las personas.",
     servicesKicker: "Cómo puedo ayudarte",
     servicesTitle: "Una mirada externa, cercana y basada en datos",
     svc1Title: "Evaluación de la cartera de productos",
-    svc1Text: "Recorremos juntos cada producto y plataforma que financias, escuchando a quienes los usan y los construyen. El resultado es una visión compartida y un plan priorizado para presentar a la dirección.",
+    svc1Text: "Recorremos juntos cada producto, servicio o línea de negocio que financias, escuchando a quienes los usan y los hacen posibles. El resultado es una visión compartida y un plan priorizado para presentar a la dirección.",
     svc2Title: "Análisis de KPIs y cuadro de mando",
     svc2Text: "Definimos los indicadores que de verdad reflejan el valor de cada producto, aprovechando los datos que ya tienes, y construimos un cuadro de mando sencillo para seguir su evolución trimestre a trimestre.",
     svc3Title: "Optimización de costes y proveedores",
-    svc3Text: "Analizamos el coste total de cada producto y buscamos ahorros sensatos: licencias, cloud, herramientas duplicadas o contratos a renegociar — siempre con el ahorro estimado sobre la mesa antes de decidir.",
+    svc3Text: "Analizamos el coste total de cada producto y buscamos ahorros sensatos: proveedores, procesos, operaciones o productos que se solapan — siempre con el ahorro estimado sobre la mesa antes de decidir.",
     svc4Title: "Transiciones y cierres cuidados",
-    svc4Text: "Cerrar un producto también forma parte de su historia. Planifico transiciones que cuidan a los usuarios, dan al equipo un siguiente paso con sentido, preservan los datos y comunican el cambio con transparencia.",
+    svc4Text: "Cerrar un producto también forma parte de su historia. Planifico transiciones que cuidan a los clientes, dan al equipo un siguiente paso con sentido, conservan lo aprendido y comunican el cambio con transparencia.",
     audKicker: "Para quién",
-    aud1Title: "Comités de dirección y CFOs",
-    aud1Text: "Queréis tener claro qué aporta cada producto de la cartera tecnológica para invertir con más confianza. Os ofrezco una lectura independiente y basada en datos.",
-    aud2Title: "Empresas medianas",
-    aud2Text: "Con los años se acumulan herramientas, plataformas y proyectos internos. Os ayudo a poner orden y a concentrar la energía en lo que más valor aporta.",
-    aud3Title: "Scale-ups e inversores",
-    aud3Text: "Ganar foco antes de la siguiente ronda o entender una cartera de producto antes de invertir: dónde está el crecimiento y dónde conviene ajustar.",
+    aud1Title: "Grandes empresas y grupos",
+    aud1Text: "Carteras amplias, varias unidades de negocio y decisiones que afectan a muchas personas. Ofrezco una lectura independiente y basada en datos para invertir con más confianza.",
+    aud2Title: "Pymes y empresas familiares",
+    aud2Text: "Con los años se acumulan productos, servicios y proyectos. Os ayudo a poner orden y a concentrar la energía — y el presupuesto — en lo que más valor aporta.",
+    aud3Title: "Startups, scale-ups e inversores",
+    aud3Text: "Ganar foco antes de la siguiente ronda o entender una cartera antes de invertir: dónde está el crecimiento y dónde conviene ajustar.",
+    audIntro: "Da igual el tamaño o el sector: industria, distribución, servicios, salud, tecnología… Si tienes productos o servicios en los que invertir, puedo ayudarte a decidir mejor.", aud4Title: "Sector público y entidades sociales", aud4Text: "Programas, servicios y proyectos financiados con recursos limitados. Os ayudo a medir su impacto real y a orientar cada euro hacia donde más ayuda.",
     engKicker: "Cómo trabajamos",
     eng1Tag: "Una jornada", eng1Title: "Diagnóstico de un producto",
     eng1Text: "Un día, en remoto o presencial, para mirar con calma un producto que te genera dudas. Te llevas una recomendación por escrito y los datos que la sostienen.",
@@ -379,7 +388,7 @@ const I18N = {
     heroKicker: "Conseil produit et portefeuille · Madrid",
     heroLine1: "Des décisions claires",
     heroLine2: "pour les produits qui comptent.",
-    heroSub: "Je suis Aarón Ayllón Benítez, PhD. J'accompagne dirigeants et équipes pour regarder leur portefeuille de produits avec sérénité et avec des données : comprendre la valeur de chacun, où il grandit, où il peut devenir plus durable, et quand le moment est venu de lui dire au revoir avec soin — pour les personnes qui l'utilisent et pour celles qui l'ont construit.",
+    heroSub: "Je suis Aarón Ayllón Benítez, PhD. J'accompagne les entreprises de toute taille et de tout secteur pour regarder leurs produits et services avec sérénité et avec des données : comprendre la valeur de chacun, où il grandit, où il peut devenir plus durable, et quand le moment est venu de lui dire au revoir avec soin — pour les personnes qui l'utilisent et pour celles qui l'ont construit.",
     heroCta1: "Parlons de votre portefeuille", heroCta2: "Ma façon de travailler",
     credLabel1: "Expérience vécue", credText1: "J'ai développé, transmis et fermé des produits dont j'étais responsable, en accompagnant les équipes à chaque étape",
     credLabel2: "Entreprise", credText2: "Responsable des plateformes d'IA et de ML d'entreprise chez BASF Digital Solutions",
@@ -392,34 +401,35 @@ const I18N = {
     v1Text: "Le produit apporte de la valeur et a du potentiel. Nous lui donnons du focus, des moyens et des objectifs pour qu'il continue de progresser.",
     v1Sig1: "De plus en plus de personnes l'utilisent", v1Sig2: "Son retour est clair et mesurable", v1Sig3: "Il s'inscrit dans la direction de l'entreprise",
     v2Tag: "Chemin 02", v2Title: "Le rendre durable",
-    v2Text: "Le produit a de la valeur, mais il coûte aujourd'hui plus qu'il ne devrait. Nous cherchons ensemble comment l'alléger — licences, infrastructure, fournisseurs ou périmètre — sans perdre ce qui le rend utile.",
-    v2Sig1: "Coût élevé par utilisateur actif", v2Sig2: "Licences ou cloud au-delà du nécessaire", v2Sig3: "Des fonctions qui recoupent d'autres outils",
+    v2Text: "Le produit a de la valeur, mais il coûte aujourd'hui plus qu'il ne devrait. Nous cherchons ensemble comment l'alléger — coûts opérationnels, fournisseurs, processus ou périmètre — sans perdre ce qui le rend utile.",
+    v2Sig1: "Coût élevé par rapport à la valeur apportée", v2Sig2: "Coûts fournisseurs ou opérationnels au-delà du nécessaire", v2Sig3: "Recoupe d'autres produits du portefeuille",
     v3Tag: "Chemin 03", v3Title: "Fermer avec soin",
-    v3Text: "Parfois, un produit a déjà rempli sa mission. Dans ce cas, nous préparons une transition respectueuse : accompagner les utilisateurs, reconnaître le travail de l'équipe et protéger les données, pour que le changement libère de l'énergie au lieu de créer de l'incertitude.",
-    v3Sig1: "Usage en baisse ou très résiduel", v3Sig2: "Pas de perspective réaliste de retour", v3Sig3: "Une meilleure alternative existe déjà pour les utilisateurs",
+    v3Text: "Parfois, un produit a déjà rempli sa mission. Dans ce cas, nous préparons une transition respectueuse : accompagner les clients, reconnaître le travail de l'équipe et préserver les acquis, pour que le changement libère de l'énergie au lieu de créer de l'incertitude.",
+    v3Sig1: "Ventes ou usage en baisse", v3Sig2: "Pas de perspective réaliste de retour", v3Sig3: "Une meilleure alternative existe déjà pour les clients",
     kpiLabel: "Ce que nous regardons",
-    kpiList: "Adoption et utilisateurs actifs · rétention · coût par utilisateur et par transaction · coût total de possession (TCO) · ROI et délai de retour · charge opérationnelle et dette technique · dépendance fournisseurs · alignement stratégique.",
+    kpiList: "Ventes, marge et rentabilité · clients et usage actif · fidélisation et satisfaction · coût par client et par unité · coût total de possession (TCO) · ROI et délai de retour · charge opérationnelle · dépendance fournisseurs · alignement stratégique.",
     aboutKicker: "À propos",
     aboutTitle: "La personne derrière l'analyse",
-    aboutText1: "Je suis Aarón Ayllón Benítez, docteur en informatique et conseiller produit et technologie. J'aime aider les organisations à comprendre la vraie valeur de ce qu'elles ont construit et à décider sereinement où mettre leur énergie.",
+    aboutText1: "Je suis Aarón Ayllón Benítez, docteur en informatique et conseiller produit et stratégie. J'aime aider les organisations à comprendre la vraie valeur de ce qu'elles ont construit et à décider sereinement où mettre leur énergie.",
     aboutText2: "J'ai été responsable de plateformes d'entreprise, j'ai créé des produits de zéro et j'ai aussi dû en quitter certains. Cette expérience m'a appris que de bons chiffres sont nécessaires, mais que les bonnes décisions se prennent avec les personnes.",
     servicesKicker: "Comment je peux aider",
     servicesTitle: "Un regard extérieur, proche et fondé sur les données",
     svc1Title: "Revue du portefeuille produits",
-    svc1Text: "Nous passons ensemble en revue chaque produit et plateforme que vous financez, à l'écoute de ceux qui les utilisent et les construisent. Le résultat : une vision partagée et un plan priorisé à présenter à la direction.",
+    svc1Text: "Nous passons ensemble en revue chaque produit, service ou ligne d'activité que vous financez, à l'écoute de ceux qui les utilisent et les rendent possibles. Le résultat : une vision partagée et un plan priorisé à présenter à la direction.",
     svc2Title: "Analyse des KPIs et tableau de bord",
     svc2Text: "Nous définissons les indicateurs qui reflètent vraiment la valeur de chaque produit, en tirant parti des données dont vous disposez déjà, et construisons un tableau de bord simple pour suivre son évolution trimestre après trimestre.",
     svc3Title: "Optimisation des coûts et fournisseurs",
-    svc3Text: "Nous analysons le coût complet de chaque produit et cherchons des économies raisonnables : licences, cloud, outils en double ou contrats à renégocier — toujours avec l'économie estimée sur la table avant de décider.",
+    svc3Text: "Nous analysons le coût complet de chaque produit et cherchons des économies raisonnables : fournisseurs, processus, opérations ou produits qui se recoupent — toujours avec l'économie estimée sur la table avant de décider.",
     svc4Title: "Transitions et fermetures soignées",
-    svc4Text: "Fermer un produit fait aussi partie de son histoire. Je planifie des transitions qui prennent soin des utilisateurs, offrent à l'équipe une suite qui a du sens, préservent les données et communiquent le changement en toute transparence.",
+    svc4Text: "Fermer un produit fait aussi partie de son histoire. Je planifie des transitions qui prennent soin des clients, offrent à l'équipe une suite qui a du sens, préservent les acquis et communiquent le changement en toute transparence.",
     audKicker: "Pour qui",
-    aud1Title: "Comités de direction et DAF",
-    aud1Text: "Vous voulez savoir clairement ce qu'apporte chaque produit du portefeuille technologique pour investir avec plus de confiance. Je vous offre une lecture indépendante et fondée sur les données.",
-    aud2Title: "Entreprises de taille intermédiaire",
-    aud2Text: "Au fil des années, outils, plateformes et projets internes s'accumulent. Je vous aide à remettre de l'ordre et à concentrer votre énergie sur ce qui apporte le plus de valeur.",
-    aud3Title: "Scale-ups et investisseurs",
-    aud3Text: "Gagner en focus avant la prochaine levée, ou comprendre un portefeuille produit avant d'investir : où se trouve la croissance et où il est judicieux d'ajuster.",
+    aud1Title: "Grandes entreprises et groupes",
+    aud1Text: "Des portefeuilles larges, plusieurs unités d'affaires et des décisions qui touchent beaucoup de personnes. J'offre une lecture indépendante et fondée sur les données pour investir avec plus de confiance.",
+    aud2Title: "PME et entreprises familiales",
+    aud2Text: "Au fil des années, produits, services et projets s'accumulent. Je vous aide à remettre de l'ordre et à concentrer votre énergie — et votre budget — sur ce qui apporte le plus de valeur.",
+    aud3Title: "Startups, scale-ups et investisseurs",
+    aud3Text: "Gagner en focus avant la prochaine levée, ou comprendre un portefeuille avant d'investir : où se trouve la croissance et où il est judicieux d'ajuster.",
+    audIntro: "Quels que soient votre taille ou votre secteur — industrie, distribution, services, santé, technologie… Si vous avez des produits ou services dans lesquels investir, je peux vous aider à mieux décider.", aud4Title: "Secteur public et associations", aud4Text: "Des programmes, services et projets financés avec des ressources limitées. Je vous aide à mesurer leur impact réel et à orienter chaque euro là où il aide le plus.",
     engKicker: "Comment travailler",
     eng1Tag: "Une journée", eng1Title: "Diagnostic d'un produit",
     eng1Text: "Une journée, à distance ou sur site, pour regarder sereinement un produit qui vous fait douter. Vous repartez avec une recommandation écrite et les données qui la soutiennent.",
