@@ -39,6 +39,9 @@
   @media (max-width: 1000px) { .aud-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 560px) { .aud-grid { grid-template-columns: 1fr; } }
   .nav a.nav-cta, .nav a.nav-cta:hover { color: var(--color-bg); text-decoration: none; }
+  .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(20px,2.5vw,32px); }
+  @media (max-width: 1000px) { .svc-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px) { .svc-grid { grid-template-columns: 1fr; } }
 </style>
 <script src="./support.js"></script>
 </head>
@@ -158,7 +161,7 @@
       <span style="display: block; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 20px" data-i18n="servicesKicker">How I can help</span>
       <h2 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(32px,4.2vw,56px); line-height: 1.02; text-transform: uppercase; letter-spacing: -0.01em; margin: 0 0 clamp(36px,4vw,56px); color: var(--color-accent-900); max-width: 24ch" data-i18n="servicesTitle">An outside view — close, honest and grounded in data</h2>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(20px,2.5vw,32px)">
+      <div class="svc-grid">
         <div class="card blueprint" style="padding: clamp(24px,2.6vw,36px)">
           <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
           <div style="font-family: var(--font-heading); font-weight: 600; font-size: 40px; line-height: 1; color: var(--color-accent-400)">01</div>
@@ -182,6 +185,18 @@
           <div style="font-family: var(--font-heading); font-weight: 600; font-size: 40px; line-height: 1; color: var(--color-accent-400)">04</div>
           <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 26px; line-height: 1.12; text-transform: uppercase; margin: 16px 0 12px; color: var(--color-accent-900)" data-i18n="svc4Title">Thoughtful transitions &amp; closures</h3>
           <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="svc4Text">Closing a product is also part of its story. I plan transitions that look after customers, give the team a meaningful next step, preserve what has been learned and communicate the change openly.</p>
+        </div>
+        <div class="card blueprint" style="padding: clamp(24px,2.6vw,36px)">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="font-family: var(--font-heading); font-weight: 600; font-size: 40px; line-height: 1; color: var(--color-accent-400)">05</div>
+          <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 26px; line-height: 1.12; text-transform: uppercase; margin: 16px 0 12px; color: var(--color-accent-900)" data-i18n="svc5Title">New initiatives &amp; business cases</h3>
+          <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="svc5Text">Before launching, buying or scaling something new, we look at it together: the problem it solves, a realistic business case and the indicators that will tell us, early on, whether it is working.</p>
+        </div>
+        <div class="card blueprint" style="padding: clamp(24px,2.6vw,36px)">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="font-family: var(--font-heading); font-weight: 600; font-size: 40px; line-height: 1; color: var(--color-accent-400)">06</div>
+          <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 26px; line-height: 1.12; text-transform: uppercase; margin: 16px 0 12px; color: var(--color-accent-900)" data-i18n="svc6Title">Supporting teams through change</h3>
+          <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="svc6Text">Decisions only work if people embrace them. I help leaders communicate them, reorganise teams with sense and adopt a way of managing by indicators that stays after I leave.</p>
         </div>
       </div>
     </section>
@@ -349,6 +364,8 @@ const I18N = {
     svc3Text: "Analizamos el coste total de cada producto y buscamos ahorros sensatos: proveedores, procesos, operaciones o productos que se solapan — siempre con el ahorro estimado sobre la mesa antes de decidir.",
     svc4Title: "Transiciones y cierres cuidados",
     svc4Text: "Cerrar un producto también forma parte de su historia. Planifico transiciones que cuidan a los clientes, dan al equipo un siguiente paso con sentido, conservan lo aprendido y comunican el cambio con transparencia.",
+    svc5Title: "Nuevas iniciativas y casos de negocio", svc5Text: "Antes de lanzar, comprar o escalar algo nuevo, lo miramos juntos: qué problema resuelve, un caso de negocio realista y los indicadores que nos dirán, desde el principio, si está funcionando.",
+    svc6Title: "Acompañamiento a equipos en el cambio", svc6Text: "Las decisiones solo funcionan si las personas las hacen suyas. Ayudo a los responsables a comunicarlas, a reorganizar equipos con sentido y a adoptar una forma de gestionar por indicadores que se quede cuando yo me vaya.",
     audKicker: "Para quién",
     aud1Title: "Grandes empresas y grupos",
     aud1Text: "Carteras amplias, varias unidades de negocio y decisiones que afectan a muchas personas. Ofrezco una lectura independiente y basada en datos para invertir con más confianza.",
@@ -423,6 +440,8 @@ const I18N = {
     svc3Text: "Nous analysons le coût complet de chaque produit et cherchons des économies raisonnables : fournisseurs, processus, opérations ou produits qui se recoupent — toujours avec l'économie estimée sur la table avant de décider.",
     svc4Title: "Transitions et fermetures soignées",
     svc4Text: "Fermer un produit fait aussi partie de son histoire. Je planifie des transitions qui prennent soin des clients, offrent à l'équipe une suite qui a du sens, préservent les acquis et communiquent le changement en toute transparence.",
+    svc5Title: "Nouvelles initiatives et business cases", svc5Text: "Avant de lancer, d'acheter ou de développer quelque chose de nouveau, nous l'examinons ensemble : le problème qu'il résout, un business case réaliste et les indicateurs qui diront, dès le départ, s'il fonctionne.",
+    svc6Title: "Accompagner les équipes dans le changement", svc6Text: "Les décisions ne fonctionnent que si les personnes se les approprient. J'aide les responsables à les communiquer, à réorganiser les équipes avec discernement et à adopter un pilotage par indicateurs qui reste après mon départ.",
     audKicker: "Pour qui",
     aud1Title: "Grandes entreprises et groupes",
     aud1Text: "Des portefeuilles larges, plusieurs unités d'affaires et des décisions qui touchent beaucoup de personnes. J'offre une lecture indépendante et fondée sur les données pour investir avec plus de confiance.",
