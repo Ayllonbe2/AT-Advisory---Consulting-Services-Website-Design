@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="./logo-mark.svg">
 <link rel="stylesheet" href="./styles.css">
 <style>
   body { margin: 0; text-wrap: pretty; background: var(--color-bg); color: var(--color-text); }
@@ -47,6 +48,9 @@
   .eng-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px clamp(24px,3vw,48px); margin-top: clamp(28px,3vw,40px); padding-top: 20px; border-top: 1px solid var(--color-divider); }
   @media (max-width: 760px) { .eng-facts { grid-template-columns: 1fr; } }
   .card .tag { align-self: flex-start; }
+  .nav a.nav-brand { display: block; line-height: 0; }
+  .nav-brand img { display: block; height: 18px; width: auto; }
+  @media (max-width: 400px) { .nav-brand img { height: 14px; } }
 </style>
 <script src="./support.js"></script>
 </head>
@@ -57,7 +61,7 @@
 <div ref="{{ rootRef }}" style="background: var(--color-bg)">
 
   <nav class="nav" style="padding-inline: max(clamp(20px,5vw,64px), calc((100% - 1240px) / 2 + clamp(20px,5vw,64px)))">
-    <span class="nav-brand" style="white-space: nowrap; color: var(--color-accent-900)">AT ADVISORY</span>
+    <a class="nav-brand" href="#"><img src="./logo-wordmark.svg" alt="AT Advisory" /></a>
     <input class="nav-toggle-control" id="nav-toggle" type="checkbox" />
     <label class="nav-toggle-label btn btn-ghost" for="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></label>
     <div class="nav-menu">
