@@ -89,7 +89,7 @@
         "itemOffered": {
           "@type": "Service",
           "name": "Integración práctica de IA",
-          "description": "Asistentes para la atención al cliente, borradores automáticos, resúmenes de documentos, búsqueda interna… Empezamos por un caso de uso concreto, medimos el resultado y solo entonces ampliamos, cuidando la protección de datos desde el primer día."
+          "description": "Lectura automática de facturas y pedidos, borradores de presupuestos y correos que tu equipo revisa, previsiones de ventas y stock, y una guía para usar la IA con seguridad en el día a día. Empezamos por un caso concreto, medimos el resultado y solo entonces ampliamos."
         }
       },
       {
@@ -168,6 +168,77 @@
   .nav a.nav-brand { display: block; line-height: 0; }
   .nav-brand img { display: block; height: 18px; width: auto; }
   @media (max-width: 400px) { .nav-brand img { height: 14px; } }
+  .demo-tabs { display: flex; flex-wrap: wrap; border-bottom: 1px solid var(--color-divider); margin-bottom: clamp(18px,2.4vw,28px); }
+  .demo-tab { font-family: var(--font-heading); font-weight: 600; font-size: 15px; letter-spacing: 0.06em; text-transform: uppercase; padding: 10px 16px 9px; margin-bottom: -1px; background: none; border: 0; border-bottom: 2px solid transparent; color: var(--color-neutral-700); cursor: pointer; }
+  .demo-tab:hover { color: var(--color-accent-700); }
+  .demo-tab[aria-pressed="true"] { color: var(--color-accent-900); border-bottom-color: var(--color-accent-700); }
+  .demo-panel { display: none; }
+  .demo[data-active="invoice"] [data-panel="invoice"], .demo[data-active="quote"] [data-panel="quote"], .demo[data-active="stock"] [data-panel="stock"] { display: block; }
+  .demo-grid { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); gap: clamp(16px,2.6vw,36px); align-items: start; }
+  .demo-arrow { align-self: center; font-size: 28px; line-height: 1; color: var(--color-accent-600); }
+  .demo-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 12px; }
+  .demo-doc { position: relative; overflow: hidden; padding: 18px 20px; background: var(--color-neutral-100); border: 1px solid var(--color-divider); box-shadow: var(--shadow-sm); font-family: ui-monospace, "Cascadia Mono", Consolas, monospace; font-size: 13px; line-height: 1.75; color: var(--color-neutral-800); }
+  .demo-doc-title { font-weight: 700; color: var(--color-text); margin-bottom: 4px; }
+  .demo-doc-gap { margin-top: 10px; }
+  .demo-doc-row { display: flex; justify-content: space-between; gap: 12px; }
+  .demo-doc-total { font-weight: 700; color: var(--color-text); border-top: 1px dashed var(--color-neutral-400); margin-top: 4px; padding-top: 4px; }
+  .demo[data-state="running"] .demo-doc::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 2px; background: var(--color-accent); box-shadow: 0 0 14px 2px color-mix(in srgb, var(--color-accent) 55%, transparent); animation: demo-scan 1.2s ease-in-out both; }
+  @keyframes demo-scan { from { top: 0; } to { top: 100%; } }
+  .demo-out { margin: 0; }
+  .demo-row { position: relative; display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 9px 0; border-bottom: 1px solid var(--color-divider); font-size: 14.5px; line-height: 1.45; }
+  .demo-row dt { color: var(--color-neutral-700); flex: none; }
+  .demo-row dd { margin: 0; text-align: right; font-weight: 500; color: var(--color-text); opacity: 0; transform: translateY(4px); transition: opacity 0.35s ease, transform 0.35s ease; }
+  .demo-row::after { content: ""; position: absolute; right: 0; top: 50%; width: 38%; height: 8px; margin-top: -4px; border-radius: 2px; background: color-mix(in srgb, var(--color-text) 9%, transparent); transition: opacity 0.2s ease; }
+  .demo[data-state="running"] .demo-row::after { animation: demo-pulse 0.7s ease-in-out infinite alternate; }
+  @keyframes demo-pulse { to { opacity: 0.35; } }
+  .demo[data-state="done"] .demo-row::after { opacity: 0; animation: none; }
+  .demo[data-state="done"] .demo-row dd { opacity: 1; transform: none; }
+  .demo-row:nth-child(2) dd { transition-delay: 0.1s; }
+  .demo-row:nth-child(3) dd { transition-delay: 0.2s; }
+  .demo-row:nth-child(4) dd { transition-delay: 0.3s; }
+  .demo-row:nth-child(5) dd { transition-delay: 0.4s; }
+  .demo-row:nth-child(6) dd { transition-delay: 0.5s; }
+  .demo-row:nth-child(7) dd { transition-delay: 0.6s; }
+  .demo-note { margin: 20px 0 0; max-width: 72ch; font-size: 15.5px; line-height: 1.7; color: var(--color-neutral-800); opacity: 0; transition: opacity 0.4s ease 0.5s; }
+  .demo[data-state="done"] .demo-note { opacity: 1; }
+  .demo-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 16px; margin-top: clamp(18px,2.4vw,28px); padding-top: 18px; border-top: 1px solid var(--color-divider); }
+  .demo-run::before { content: "\25B6"; font-size: 10px; }
+  .demo-reset::before { content: "\21BA"; }
+  .demo-working, .demo-reset { display: none; }
+  .demo-working { align-items: center; gap: 8px; min-height: 30px; font-size: 14px; color: var(--color-accent-700); }
+  .demo-working::before { content: ""; width: 12px; height: 12px; border: 2px solid var(--color-accent-300); border-top-color: var(--color-accent-700); border-radius: 50%; animation: demo-spin 0.8s linear infinite; }
+  @keyframes demo-spin { to { transform: rotate(360deg); } }
+  .demo[data-state="running"] .demo-run, .demo[data-state="done"] .demo-run { display: none; }
+  .demo[data-state="running"] .demo-working, .demo[data-state="done"] .demo-reset { display: inline-flex; }
+  .demo-disclaimer { margin-left: auto; font-size: 12.5px; color: var(--color-neutral-600); }
+  .demo-chart { margin-bottom: 10px; }
+  .demo-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-bottom: 8px; font-size: 12.5px; color: var(--color-neutral-700); }
+  .demo-key { display: inline-flex; align-items: center; gap: 6px; }
+  .demo-swatch { display: inline-block; width: 12px; height: 12px; border-radius: 2px; background: var(--color-accent-700); }
+  .demo-swatch.demo-swatch-fc, .demo-bar.demo-bar-fc { background: repeating-linear-gradient(135deg, var(--color-accent-400) 0 2px, transparent 2px 5px); border: 1.5px dashed var(--color-accent-700); }
+  .demo-bars, .demo-xs { display: flex; gap: 10px; }
+  .demo-bars { align-items: flex-end; height: 150px; padding-top: 22px; border-bottom: 1px solid var(--color-neutral-500); }
+  .demo-col { position: relative; flex: 1; height: 100%; display: flex; align-items: flex-end; justify-content: center; }
+  .demo-bar { position: relative; width: 100%; max-width: 34px; border-radius: 4px 4px 0 0; background: var(--color-accent-700); transform-origin: bottom; }
+  .demo-bar.demo-bar-fc { border-bottom: 0; transform: scaleY(0); transition: transform 0.5s cubic-bezier(0.2,0.7,0.2,1); }
+  .demo-bar.demo-bar-fc.demo-later { transition-delay: 0.15s; }
+  .demo[data-state="done"] .demo-bar-fc { transform: none; }
+  .demo-lab { position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); margin-bottom: 4px; font-size: 12.5px; font-weight: 500; color: var(--color-text); opacity: 0; transition: opacity 0.3s ease 0.55s; }
+  .demo[data-state="done"] .demo-lab { opacity: 1; }
+  .demo-tip { position: absolute; bottom: calc(100% + 6px); left: 50%; z-index: 1; transform: translateX(-50%); padding: 3px 7px; font-size: 12px; white-space: nowrap; background: var(--color-accent-900); color: var(--color-bg); opacity: 0; pointer-events: none; transition: opacity 0.15s ease; }
+  .demo-col:hover .demo-tip { opacity: 1; }
+  .demo-now { position: relative; align-self: stretch; width: 0; border-left: 1px dashed var(--color-neutral-500); }
+  .demo-now span { position: absolute; top: -20px; right: 6px; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; white-space: nowrap; color: var(--color-neutral-600); }
+  .demo-xs { margin-top: 6px; font-size: 12px; color: var(--color-neutral-600); }
+  .demo-xs > span { flex: 1; text-align: center; }
+  .demo-xs > .demo-now-gap { flex: 0 0 0; }
+  @media (max-width: 760px) {
+    .demo-grid { grid-template-columns: minmax(0,1fr); }
+    .demo-arrow { justify-self: center; transform: rotate(90deg); }
+    .demo-disclaimer { margin-left: 0; flex-basis: 100%; }
+  }
+  @media (max-width: 560px) { .demo-tab { padding: 8px 10px 7px; font-size: 14px; } }
+  @media (prefers-reduced-motion: reduce) { .demo *, .demo *::before, .demo *::after { animation: none !important; transition: none !important; } }
 </style>
 <script src="./support.js"></script>
 </head>
@@ -257,11 +328,11 @@
           <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
           <div style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-accent-600)" data-i18n="v2Tag">Paso 02</div>
           <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 34px; line-height: 1.05; text-transform: uppercase; margin: 12px 0 12px; color: var(--color-accent-900)" data-i18n="v2Title">Añadir IA donde compensa</h3>
-          <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="v2Text">Asistentes que responden consultas habituales, borradores de presupuestos y correos en segundos, búsquedas en tu propia documentación… Solo incorporamos IA cuando ahorra tiempo o dinero, y de forma que tu equipo pueda gestionarla sin depender de nadie.</p>
+          <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="v2Text">La IA que más rinde en una pyme no habla con tus clientes: trabaja por detrás. Lee facturas y pedidos, prepara borradores que tu equipo revisa y anticipa ventas y stock. Solo la incorporamos cuando ahorra tiempo o dinero, y de forma que tu equipo pueda gestionarla sin depender de nadie.</p>
           <ul class="verdict-signals" style="color: var(--color-neutral-800)">
-            <li data-i18n="v2Sig1">Consultas de clientes que se repiten una y otra vez</li>
+            <li data-i18n="v2Sig1">Datos que se teclean a mano de un documento a otro</li>
             <li data-i18n="v2Sig2">Horas dedicadas a redactar presupuestos, correos o informes</li>
-            <li data-i18n="v2Sig3">Documentación que cuesta encontrar cuando se necesita</li>
+            <li data-i18n="v2Sig3">Compras y stock decididos a ojo</li>
           </ul>
         </div>
         <div class="card blueprint verdict" style="padding: clamp(24px,2.6vw,36px)">
@@ -280,6 +351,131 @@
       <div style="margin-top: clamp(32px,4vw,48px); border-top: 1px solid var(--color-divider); padding-top: 20px; display: grid; grid-template-columns: minmax(0, 200px) 1fr; gap: 12px 32px" class="kpi-row">
         <div style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-accent-700); padding-top: 3px" data-i18n="kpiLabel">Qué miramos</div>
         <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="kpiList">Cómo te encuentran hoy clientes y asistentes de IA · web y ficha de Google · procesos manuales y repetitivos · estado de tus datos · herramientas que pagas y las que de verdad usas · reseñas y reputación · protección de datos y seguridad · presupuesto y capacidad del equipo · objetivos de crecimiento.</p>
+      </div>
+    </section>
+
+    <section id="ejemplo" style="padding: clamp(40px,5vw,72px) 0 clamp(32px,4vw,56px)">
+      <span style="display: block; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 20px" data-i18n="demoKicker">Ejemplo práctico</span>
+      <h2 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(32px,4.2vw,56px); line-height: 1.02; text-transform: uppercase; letter-spacing: -0.01em; margin: 0 0 20px; color: var(--color-accent-900); max-width: 24ch" data-i18n="demoTitle">Así trabaja la IA por detrás</h2>
+      <p style="font-size: 17px; line-height: 1.7; max-width: 64ch; margin: 0 0 clamp(28px,3.5vw,44px); color: var(--color-neutral-800)" data-i18n="demoIntro">Sin chats: la IA que más rinde en una pyme se encarga de tareas internas que hoy se hacen a mano y las deja listas para que alguien de tu equipo las revise. Elige un ejemplo y pulsa «Procesar con IA».</p>
+      <div class="demo card blueprint" data-active="invoice" data-state="idle" style="padding: clamp(20px,2.6vw,36px)">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <div class="demo-tabs">
+          <button type="button" class="demo-tab" aria-pressed="true" data-tab="invoice" onClick="{{ onDemoTab }}" data-i18n="demoTab1">Facturas</button>
+          <button type="button" class="demo-tab" aria-pressed="false" data-tab="quote" onClick="{{ onDemoTab }}" data-i18n="demoTab2">Presupuestos</button>
+          <button type="button" class="demo-tab" aria-pressed="false" data-tab="stock" onClick="{{ onDemoTab }}" data-i18n="demoTab3">Previsión de stock</button>
+        </div>
+        <div class="demo-panel" data-panel="invoice">
+          <div class="demo-grid">
+            <div class="demo-side">
+              <div class="demo-label" data-i18n="demoBefore">Antes</div>
+              <div class="demo-doc">
+                <div class="demo-doc-title" data-i18n="d1DocTitle">Factura nº 2026-0231</div>
+                <div>Suministros Ejemplo, S.L.</div>
+                <div data-i18n="d1DocDate">Fecha: 03/11/2026</div>
+                <div class="demo-doc-gap" data-i18n="d1DocItem">Material de embalaje · 40 cajas</div>
+                <div class="demo-doc-row"><span data-i18n="d1Base">Base imponible</span><span>412,00 €</span></div>
+                <div class="demo-doc-row"><span data-i18n="d1Vat">IVA 21 %</span><span>86,52 €</span></div>
+                <div class="demo-doc-row demo-doc-total"><span data-i18n="d1Total">Total</span><span>498,52 €</span></div>
+              </div>
+            </div>
+            <div class="demo-arrow" aria-hidden="true">→</div>
+            <div class="demo-side">
+              <div class="demo-label" data-i18n="demoAfter">Después</div>
+              <dl class="demo-out">
+                <div class="demo-row"><dt data-i18n="d1F1">Proveedor</dt><dd>Suministros Ejemplo, S.L.</dd></div>
+                <div class="demo-row"><dt data-i18n="d1F2">Fecha</dt><dd>03/11/2026</dd></div>
+                <div class="demo-row"><dt data-i18n="d1Base">Base imponible</dt><dd>412,00 €</dd></div>
+                <div class="demo-row"><dt data-i18n="d1Vat">IVA 21 %</dt><dd>86,52 €</dd></div>
+                <div class="demo-row"><dt data-i18n="d1Total">Total</dt><dd>498,52 €</dd></div>
+                <div class="demo-row"><dt data-i18n="d1F6">Cuenta contable</dt><dd data-i18n="d1V6">602 · Otros aprovisionamientos</dd></div>
+              </dl>
+            </div>
+          </div>
+          <p class="demo-note" data-i18n="d1Note">Nadie teclea nada: los datos pasan a tu programa de contabilidad y solo se revisa lo que la IA marca como dudoso.</p>
+        </div>
+        <div class="demo-panel" data-panel="quote">
+          <div class="demo-grid">
+            <div class="demo-side">
+              <div class="demo-label" data-i18n="demoBefore">Antes</div>
+              <div class="demo-doc">
+                <div class="demo-doc-title" data-i18n="d2DocTitle">Notas de la visita · 12/11</div>
+                <div data-i18n="d2DocL1">Cliente: Bar Ejemplo (Madrid)</div>
+                <div data-i18n="d2DocL2">Pintar el local, unos 80 m², dos manos</div>
+                <div data-i18n="d2DocL3">Blanco roto, material incluido</div>
+                <div data-i18n="d2DocL4">Precio habitual: 14 €/m²</div>
+                <div data-i18n="d2DocL5">Quiere empezar antes del 1/12</div>
+              </div>
+            </div>
+            <div class="demo-arrow" aria-hidden="true">→</div>
+            <div class="demo-side">
+              <div class="demo-label" data-i18n="demoAfter">Después</div>
+              <dl class="demo-out">
+                <div class="demo-row"><dt data-i18n="d2F1">Cliente</dt><dd>Bar Ejemplo</dd></div>
+                <div class="demo-row"><dt data-i18n="d2F2">Trabajo</dt><dd data-i18n="d2V2">Pintura del local, 80 m², dos manos, blanco roto</dd></div>
+                <div class="demo-row"><dt data-i18n="d2F3">Importe</dt><dd>80 m² × 14 € = 1.120,00 €</dd></div>
+                <div class="demo-row"><dt data-i18n="d1Vat">IVA 21 %</dt><dd>235,20 €</dd></div>
+                <div class="demo-row"><dt data-i18n="d1Total">Total</dt><dd>1.355,20 €</dd></div>
+                <div class="demo-row"><dt data-i18n="d2F6">Inicio</dt><dd data-i18n="d2V6">Antes del 1 de diciembre</dd></div>
+                <div class="demo-row"><dt data-i18n="d2F7">Estado</dt><dd data-i18n="d2V7">Borrador · pendiente de tu revisión</dd></div>
+              </dl>
+            </div>
+          </div>
+          <p class="demo-note" data-i18n="d2Note">El borrador sale en segundos, con tus precios y tu formato. Tú lo revisas, lo ajustas si hace falta y lo envías.</p>
+        </div>
+        <div class="demo-panel" data-panel="stock">
+          <div class="demo-grid">
+            <div class="demo-side">
+              <div class="demo-label" data-i18n="demoBefore">Antes</div>
+              <div class="demo-doc">
+                <div class="demo-doc-title" data-i18n="d3DocTitle">Café en grano 1 kg · ventas por semana</div>
+                <div class="demo-doc-row"><span><span data-i18n="d3Week">Semana</span> 1</span><span>32</span></div>
+                <div class="demo-doc-row"><span><span data-i18n="d3Week">Semana</span> 2</span><span>35</span></div>
+                <div class="demo-doc-row"><span><span data-i18n="d3Week">Semana</span> 3</span><span>41</span></div>
+                <div class="demo-doc-row"><span><span data-i18n="d3Week">Semana</span> 4</span><span>44</span></div>
+                <div class="demo-doc-gap" data-i18n="d3DocStock">Stock actual: 50 uds.</div>
+                <div data-i18n="d3DocHabit">Pedido: a ojo, cuando se acaba</div>
+              </div>
+            </div>
+            <div class="demo-arrow" aria-hidden="true">→</div>
+            <div class="demo-side">
+              <div class="demo-label" data-i18n="demoAfter">Después</div>
+              <div class="demo-chart" aria-hidden="true">
+                <div class="demo-legend"><span class="demo-key"><i class="demo-swatch"></i><span data-i18n="d3LegReal">Ventas reales</span></span><span class="demo-key"><i class="demo-swatch demo-swatch-fc"></i><span data-i18n="d3LegFc">Previsión</span></span></div>
+                <div class="demo-bars">
+            <div class="demo-col"><div class="demo-bar" style="height: 57.1%"><span class="demo-tip"><span data-i18n="d3Week">Semana</span> 1 · 32</span></div></div>
+            <div class="demo-col"><div class="demo-bar" style="height: 62.5%"><span class="demo-tip"><span data-i18n="d3Week">Semana</span> 2 · 35</span></div></div>
+            <div class="demo-col"><div class="demo-bar" style="height: 73.2%"><span class="demo-tip"><span data-i18n="d3Week">Semana</span> 3 · 41</span></div></div>
+            <div class="demo-col"><div class="demo-bar" style="height: 78.6%"><span class="demo-tip"><span data-i18n="d3Week">Semana</span> 4 · 44</span></div></div>
+            <div class="demo-now"><span data-i18n="d3Now">Hoy</span></div>
+            <div class="demo-col"><div class="demo-bar demo-bar-fc" style="height: 85.7%"><span class="demo-lab">48</span></div></div>
+            <div class="demo-col"><div class="demo-bar demo-bar-fc demo-later" style="height: 92.9%"><span class="demo-lab">52</span></div></div>
+                </div>
+                <div class="demo-xs">
+            <span><span data-i18n="d3WeekShort">S</span>1</span>
+            <span><span data-i18n="d3WeekShort">S</span>2</span>
+            <span><span data-i18n="d3WeekShort">S</span>3</span>
+            <span><span data-i18n="d3WeekShort">S</span>4</span>
+            <span class="demo-now-gap"></span>
+            <span><span data-i18n="d3WeekShort">S</span>5</span>
+            <span><span data-i18n="d3WeekShort">S</span>6</span>
+                </div>
+              </div>
+              <dl class="demo-out">
+                <div class="demo-row"><dt data-i18n="d3F1">Próximas 2 semanas</dt><dd data-i18n="d3V1">≈ 100 uds.</dd></div>
+                <div class="demo-row"><dt data-i18n="d3F2">Stock actual</dt><dd data-i18n="d3V2">50 uds.</dd></div>
+                <div class="demo-row"><dt data-i18n="d3F3">Pedido recomendado</dt><dd data-i18n="d3V3">60 uds. antes del viernes</dd></div>
+              </dl>
+            </div>
+          </div>
+          <p class="demo-note" data-i18n="d3Note">Las ventas suben unas 4 uds. por semana; con 10 uds. de margen de seguridad, el pedido se calcula solo. Compras con datos y no a ojo: menos roturas de stock y menos dinero parado en el almacén.</p>
+        </div>
+        <div class="demo-actions">
+          <button type="button" class="btn btn-primary demo-run" onClick="{{ onDemoRun }}" data-i18n="demoRun">Procesar con IA</button>
+          <span class="demo-working" data-i18n="demoWorking">Procesando…</span>
+          <button type="button" class="btn btn-secondary demo-reset" onClick="{{ onDemoReset }}" data-i18n="demoReset">Repetir</button>
+          <span class="demo-disclaimer" data-i18n="demoDisclaimer">Ejemplo ilustrativo con datos ficticios.</span>
+        </div>
       </div>
     </section>
 
@@ -304,7 +500,7 @@
           <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
           <div style="font-family: var(--font-heading); font-weight: 600; font-size: 40px; line-height: 1; color: var(--color-accent-400)">03</div>
           <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 26px; line-height: 1.12; text-transform: uppercase; margin: 16px 0 12px; color: var(--color-accent-900)" data-i18n="svc3Title">Integración práctica de IA</h3>
-          <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="svc3Text">Asistentes para la atención al cliente, borradores automáticos, resúmenes de documentos, búsqueda interna… Empezamos por un caso de uso concreto, medimos el resultado y solo entonces ampliamos, cuidando la protección de datos desde el primer día.</p>
+          <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="svc3Text">Lectura automática de facturas y pedidos, borradores de presupuestos y correos que tu equipo revisa, previsiones de ventas y stock, y una guía para usar la IA con seguridad en el día a día. Empezamos por un caso concreto, medimos el resultado y solo entonces ampliamos.</p>
         </div>
         <div class="card blueprint" style="padding: clamp(24px,2.6vw,36px)">
           <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
@@ -501,10 +697,10 @@ const I18N = {
     v1Sig3: "A website that is outdated, slow or hard to update",
     v2Tag: "Step 02",
     v2Title: "Add AI where it pays off",
-    v2Text: "Assistants that answer common enquiries, quotes and emails drafted in seconds, search across your own documents… We only bring in AI when it saves time or money, and in a way your team can manage without depending on anyone.",
-    v2Sig1: "Customer enquiries that come up again and again",
+    v2Text: "The AI that pays off most in a small business doesn't talk to your customers: it works behind the scenes. It reads invoices and orders, prepares drafts your team reviews and anticipates sales and stock. We only bring it in when it saves time or money, and in a way your team can manage without depending on anyone.",
+    v2Sig1: "Data typed by hand from one document to another",
     v2Sig2: "Hours spent writing quotes, emails or reports",
-    v2Sig3: "Documents that are hard to find when you need them",
+    v2Sig3: "Purchasing and stock decided by gut feeling",
     v3Tag: "Step 03",
     v3Title: "Be found by AI",
     v3Text: "More and more people ask ChatGPT, Gemini or Perplexity before searching on Google. We make your business information clear, consistent and easy for these systems to interpret, so they have good reasons to recommend you. No one can guarantee a recommendation, but a great deal can be done to earn one.",
@@ -520,7 +716,7 @@ const I18N = {
     svc2Title: "Digitalising processes & tools",
     svc2Text: "We replace paper, scattered spreadsheets and repetitive tasks with simple tools: customer management, bookings, invoicing, automations. Chosen for your size and budget, and set up so your team actually uses them.",
     svc3Title: "Practical AI integration",
-    svc3Text: "Customer service assistants, automatic drafts, document summaries, internal search… We start with one concrete use case, measure the result and only then expand, with data protection in mind from day one.",
+    svc3Text: "Automatic reading of invoices and orders, drafts of quotes and emails that your team reviews, sales and stock forecasts, and a guide to using AI safely day to day. We start with one concrete case, measure the result and only then expand.",
     svc4Title: "Visibility in AI assistants & search",
     svc4Text: "We prepare your website, Google profile, directories and content so that ChatGPT, Gemini, Perplexity and search engines understand what you offer, where and for whom — and can recommend you when someone needs it.",
     svc5Title: "Modern website & online presence",
@@ -573,7 +769,60 @@ const I18N = {
     fMsg: "Tell me what you would like to improve",
     fSend: "Send enquiry",
     fNote: "Opens your mail client with the message filled in.",
-    footBrand: "Ayllon Tech Advisory (AT Advisory) · Madrid, Spain"
+    footBrand: "Ayllon Tech Advisory (AT Advisory) · Madrid, Spain",
+    demoKicker: "A practical example",
+    demoTitle: "How AI works behind the scenes",
+    demoIntro: "No chatbots: the AI that pays off most in a small business takes on internal tasks that are done by hand today and gets them ready for someone on your team to review. Pick an example and press “Process with AI”.",
+    demoTab1: "Invoices",
+    demoTab2: "Quotes",
+    demoTab3: "Stock forecast",
+    demoBefore: "Before",
+    demoAfter: "After",
+    demoRun: "Process with AI",
+    demoWorking: "Processing…",
+    demoReset: "Run again",
+    demoDisclaimer: "Illustrative example with fictitious data.",
+    d1DocTitle: "Invoice no. 2026-0231",
+    d1DocDate: "Date: 03/11/2026",
+    d1DocItem: "Packaging material · 40 boxes",
+    d1Base: "Net amount",
+    d1Vat: "VAT 21%",
+    d1Total: "Total",
+    d1F1: "Supplier",
+    d1F2: "Date",
+    d1F6: "Ledger account",
+    d1V6: "602 · Other supplies",
+    d1Note: "Nobody types anything: the data goes straight into your accounting software and only what the AI flags as uncertain is reviewed.",
+    d2DocTitle: "Site visit notes · 12/11",
+    d2DocL1: "Client: Bar Ejemplo (Madrid)",
+    d2DocL2: "Paint the premises, about 80 m², two coats",
+    d2DocL3: "Off-white, materials included",
+    d2DocL4: "Usual price: €14/m²",
+    d2DocL5: "Wants to start before 1 Dec",
+    d2F1: "Client",
+    d2F2: "Job",
+    d2V2: "Painting the premises, 80 m², two coats, off-white",
+    d2F3: "Amount",
+    d2F6: "Start",
+    d2V6: "Before 1 December",
+    d2F7: "Status",
+    d2V7: "Draft · awaiting your review",
+    d2Note: "The draft is ready in seconds, with your prices and your format. You review it, adjust it if needed and send it.",
+    d3DocTitle: "Coffee beans 1 kg · weekly sales",
+    d3Week: "Week",
+    d3DocStock: "Current stock: 50 units",
+    d3DocHabit: "Ordering: by eye, when it runs out",
+    d3LegReal: "Actual sales",
+    d3LegFc: "Forecast",
+    d3WeekShort: "W",
+    d3Now: "Today",
+    d3F1: "Next 2 weeks",
+    d3V1: "≈ 100 units",
+    d3F2: "Current stock",
+    d3V2: "50 units",
+    d3F3: "Recommended order",
+    d3V3: "60 units before Friday",
+    d3Note: "Sales are rising by about 4 units a week; with a 10-unit safety margin, the order works itself out. Buying on data rather than by eye: fewer stock-outs and less cash tied up in the stockroom."
   },
   fr: {
     navMenu: "Menu",
@@ -609,10 +858,10 @@ const I18N = {
     v1Sig3: "Un site dépassé, lent ou difficile à mettre à jour",
     v2Tag: "Étape 02",
     v2Title: "Ajouter l'IA là où elle est rentable",
-    v2Text: "Des assistants qui répondent aux demandes courantes, des devis et e-mails rédigés en quelques secondes, la recherche dans vos propres documents… Nous n'intégrons l'IA que si elle fait gagner du temps ou de l'argent, et de façon à ce que votre équipe puisse la gérer sans dépendre de personne.",
-    v2Sig1: "Des demandes clients qui reviennent sans cesse",
+    v2Text: "L'IA la plus rentable pour une PME ne parle pas à vos clients : elle travaille en coulisses. Elle lit factures et commandes, prépare des brouillons que votre équipe relit et anticipe ventes et stocks. Nous ne l'intégrons que si elle fait gagner du temps ou de l'argent, et de façon à ce que votre équipe puisse la gérer sans dépendre de personne.",
+    v2Sig1: "Des données ressaisies à la main d'un document à l'autre",
     v2Sig2: "Des heures passées à rédiger devis, e-mails ou rapports",
-    v2Sig3: "Des documents difficiles à retrouver au bon moment",
+    v2Sig3: "Des achats et des stocks décidés au jugé",
     v3Tag: "Étape 03",
     v3Title: "Être trouvé par l'IA",
     v3Text: "De plus en plus de personnes interrogent ChatGPT, Gemini ou Perplexity avant de chercher sur Google. Nous rendons les informations de votre entreprise claires, cohérentes et faciles à interpréter pour ces systèmes, afin qu'ils aient de bonnes raisons de vous recommander. Personne ne peut garantir une recommandation, mais on peut faire beaucoup pour la mériter.",
@@ -628,7 +877,7 @@ const I18N = {
     svc2Title: "Digitalisation des processus et des outils",
     svc2Text: "Nous remplaçons papiers, tableurs éparpillés et tâches répétitives par des outils simples : gestion clients, réservations, facturation, automatisations. Choisis selon votre taille et votre budget, et mis en place pour que l'équipe les utilise vraiment.",
     svc3Title: "Intégration pratique de l'IA",
-    svc3Text: "Assistants pour le service client, brouillons automatiques, résumés de documents, recherche interne… Nous commençons par un cas d'usage concret, mesurons le résultat et n'élargissons qu'ensuite, en veillant à la protection des données dès le premier jour.",
+    svc3Text: "Lecture automatique des factures et des commandes, brouillons de devis et d'e-mails relus par votre équipe, prévisions de ventes et de stocks, et un guide pour utiliser l'IA en toute sécurité au quotidien. Nous commençons par un cas concret, mesurons le résultat et n'élargissons qu'ensuite.",
     svc4Title: "Visibilité dans les assistants d'IA et la recherche",
     svc4Text: "Nous préparons votre site, votre fiche Google, les annuaires et les contenus pour que ChatGPT, Gemini, Perplexity et les moteurs de recherche comprennent ce que vous proposez, où et pour qui, et puissent vous recommander quand quelqu'un en a besoin.",
     svc5Title: "Site moderne et présence en ligne",
@@ -681,7 +930,60 @@ const I18N = {
     fMsg: "Dites-moi ce que vous aimeriez améliorer",
     fSend: "Envoyer la demande",
     fNote: "Ouvre votre messagerie avec le message pré-rempli.",
-    footBrand: "Ayllon Tech Advisory (AT Advisory) · Madrid, Espagne"
+    footBrand: "Ayllon Tech Advisory (AT Advisory) · Madrid, Espagne",
+    demoKicker: "Exemple concret",
+    demoTitle: "L'IA au travail, en coulisses",
+    demoIntro: "Pas de chatbot : l'IA la plus rentable pour une PME prend en charge des tâches internes faites aujourd'hui à la main et les prépare pour qu'une personne de votre équipe les vérifie. Choisissez un exemple et appuyez sur « Traiter avec l'IA ».",
+    demoTab1: "Factures",
+    demoTab2: "Devis",
+    demoTab3: "Prévision de stock",
+    demoBefore: "Avant",
+    demoAfter: "Après",
+    demoRun: "Traiter avec l'IA",
+    demoWorking: "Traitement en cours…",
+    demoReset: "Recommencer",
+    demoDisclaimer: "Exemple illustratif avec des données fictives.",
+    d1DocTitle: "Facture nº 2026-0231",
+    d1DocDate: "Date : 03/11/2026",
+    d1DocItem: "Matériel d'emballage · 40 cartons",
+    d1Base: "Montant HT",
+    d1Vat: "TVA 21 %",
+    d1Total: "Total TTC",
+    d1F1: "Fournisseur",
+    d1F2: "Date",
+    d1F6: "Compte comptable",
+    d1V6: "602 · Autres approvisionnements",
+    d1Note: "Personne ne ressaisit rien : les données passent dans votre logiciel comptable et seul ce que l'IA signale comme douteux est vérifié.",
+    d2DocTitle: "Notes de visite · 12/11",
+    d2DocL1: "Client : Bar Ejemplo (Madrid)",
+    d2DocL2: "Peindre le local, environ 80 m², deux couches",
+    d2DocL3: "Blanc cassé, matériel inclus",
+    d2DocL4: "Prix habituel : 14 €/m²",
+    d2DocL5: "Veut commencer avant le 1/12",
+    d2F1: "Client",
+    d2F2: "Travaux",
+    d2V2: "Peinture du local, 80 m², deux couches, blanc cassé",
+    d2F3: "Montant HT",
+    d2F6: "Début",
+    d2V6: "Avant le 1er décembre",
+    d2F7: "Statut",
+    d2V7: "Brouillon · en attente de votre validation",
+    d2Note: "Le brouillon est prêt en quelques secondes, avec vos prix et votre mise en page. Vous le relisez, l'ajustez si besoin et l'envoyez.",
+    d3DocTitle: "Café en grains 1 kg · ventes par semaine",
+    d3Week: "Semaine",
+    d3DocStock: "Stock actuel : 50 unités",
+    d3DocHabit: "Commande : au jugé, quand il n'y en a plus",
+    d3LegReal: "Ventes réelles",
+    d3LegFc: "Prévision",
+    d3WeekShort: "S",
+    d3Now: "Aujourd'hui",
+    d3F1: "2 prochaines semaines",
+    d3V1: "≈ 100 unités",
+    d3F2: "Stock actuel",
+    d3V2: "50 unités",
+    d3F3: "Commande recommandée",
+    d3V3: "60 unités avant vendredi",
+    d3Note: "Les ventes augmentent d'environ 4 unités par semaine ; avec 10 unités de marge de sécurité, la commande se calcule toute seule. Des achats fondés sur les données et non au jugé : moins de ruptures et moins de trésorerie immobilisée."
   }
 };
 
@@ -759,6 +1061,34 @@ class Component extends DCLogic {
       rootRef: this.rootRef,
       showPrinciples: this.props.showPrinciples ?? true,
       onLang: (e) => this.apply(e.currentTarget.getAttribute('data-lang')),
+      onDemoTab: (e) => {
+        const btn = e.currentTarget;
+        const box = btn.closest('.demo');
+        if (!box) return;
+        clearTimeout(this.demoTimer);
+        box.setAttribute('data-active', btn.getAttribute('data-tab'));
+        box.setAttribute('data-state', 'idle');
+        box.querySelectorAll('.demo-tab').forEach((b) => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
+      },
+      onDemoRun: (e) => {
+        const box = e.currentTarget.closest('.demo');
+        if (!box) return;
+        const hadFocus = document.activeElement === e.currentTarget;
+        clearTimeout(this.demoTimer);
+        box.setAttribute('data-state', 'running');
+        this.demoTimer = setTimeout(() => {
+          box.setAttribute('data-state', 'done');
+          if (hadFocus) box.querySelector('.demo-reset').focus();
+        }, 1200);
+      },
+      onDemoReset: (e) => {
+        const box = e.currentTarget.closest('.demo');
+        if (!box) return;
+        const hadFocus = document.activeElement === e.currentTarget;
+        clearTimeout(this.demoTimer);
+        box.setAttribute('data-state', 'idle');
+        if (hadFocus) box.querySelector('.demo-run').focus();
+      },
       onSubmit: (e) => {
         e.preventDefault();
         const f = e.currentTarget;
