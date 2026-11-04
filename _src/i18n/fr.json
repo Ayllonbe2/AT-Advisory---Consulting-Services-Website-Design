@@ -103,7 +103,6 @@
   "fOrg": "Entreprise",
   "fMsg": "Dites-moi ce que vous aimeriez améliorer",
   "fSend": "Envoyer la demande",
-  "fNote": "Ouvre votre messagerie avec le message pré-rempli.",
   "navWork": "Projets",
   "workKicker": "Ce que j'ai construit",
   "workTitle": "Je ne fais pas que conseiller : je construis aussi",
@@ -163,7 +162,6 @@
   "langLabel": "Langue",
   "copyEmail": "Copier l'adresse",
   "copyDone": "Copiée",
-  "fNoteSend": "Je vous réponds sous deux jours ouvrés.",
   "fSending": "Envoi en cours…",
   "fSuccess": "Merci ! Message bien reçu : je vous réponds sous deux jours ouvrés.",
   "fError": "L'envoi a échoué. Réessayez ou écrivez-moi directement à {email}.",
@@ -188,7 +186,6 @@
   "footPrivacy": "Confidentialité",
   "fConsent": "J'ai lu et j'accepte la",
   "fConsentLink": "politique de confidentialité",
-  "fLegal": "Responsable : Aarón Ayllón Benítez · Finalité : répondre à votre demande · Base légale : votre consentement · Aucune cession à des tiers, sauf obligation légale · Droits : accès, rectification, effacement et autres, en m'écrivant.",
   "meta.privacy.title": "Politique de confidentialité · AT Advisory",
   "meta.privacy.description": "Comment je traite les données envoyées via le formulaire de contact ou par e-mail : responsable, finalité, base légale, conservation, destinataires et vos droits."
 }

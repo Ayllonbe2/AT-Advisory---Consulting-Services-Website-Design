@@ -49,7 +49,7 @@ El formulario mostrará «Enviando…», «¡Gracias!» o un error con el correo
 
 ## Privacidad
 
-- El formulario exige marcar «He leído y acepto la política de privacidad» y muestra debajo la información básica de protección de datos (`fLegal`).
+- El formulario exige marcar «He leído y acepto la política de privacidad», que enlaza a la política.
 - La política está en `/privacidad/`, `/en/privacy/` y `/fr/confidentialite/`, enlazada desde el pie de todas las páginas.
 - Lo que solo aplica con Web3Forms va entre `<!--if:web3forms-->` y `<!--/if-->`: al poner la clave, la política añade sola a Web3Forms entre los proveedores.
 - La web no usa cookies ni carga recursos de terceros. Si algún día se añade analítica, fuentes externas o un servicio nuevo, hay que actualizar la política (y su fecha) en los tres idiomas.

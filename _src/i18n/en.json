@@ -103,7 +103,6 @@
   "fOrg": "Business",
   "fMsg": "Tell me what you would like to improve",
   "fSend": "Send enquiry",
-  "fNote": "Opens your mail client with the message filled in.",
   "navWork": "Projects",
   "workKicker": "What I have built",
   "workTitle": "I don't just advise: I build too",
@@ -163,7 +162,6 @@
   "langLabel": "Language",
   "copyEmail": "Copy email",
   "copyDone": "Copied",
-  "fNoteSend": "I will reply within two working days.",
   "fSending": "Sending…",
   "fSuccess": "Thank you! Message received: I will reply within two working days.",
   "fError": "It could not be sent. Please try again or email me directly at {email}.",
@@ -188,7 +186,6 @@
   "footPrivacy": "Privacy",
   "fConsent": "I have read and accept the",
   "fConsentLink": "privacy policy",
-  "fLegal": "Controller: Aarón Ayllón Benítez · Purpose: replying to your enquiry · Legal basis: your consent · No data shared with third parties unless required by law · Rights: access, rectification, erasure and more, by emailing me.",
   "meta.privacy.title": "Privacy policy · AT Advisory",
   "meta.privacy.description": "How I handle the data you send through the contact form or by email: controller, purpose, legal basis, retention, recipients and your rights."
 }

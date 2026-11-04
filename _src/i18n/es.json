@@ -3,7 +3,6 @@
   "navLabel": "Principal",
   "langLabel": "Idioma",
   "copyDone": "Copiado",
-  "fNoteSend": "Te respondo en dos días laborables.",
   "fSending": "Enviando…",
   "fSuccess": "¡Gracias! Mensaje recibido: te respondo en dos días laborables.",
   "fError": "No se ha podido enviar. Inténtalo de nuevo o escríbeme directamente a {email}.",

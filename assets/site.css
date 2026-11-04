@@ -247,7 +247,6 @@
   .form-consent { display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px; line-height: 1.5; color: var(--color-accent-200); cursor: pointer; }
   .form-consent input { flex: none; width: 16px; height: 16px; margin: 2px 0 0; accent-color: var(--color-accent-400); }
   .form-consent a { color: var(--color-accent-300); text-decoration: underline; }
-  .form-legal { margin: 0; font-size: 12px; line-height: 1.6; color: var(--color-accent-300); }
   .legal-updated { margin: 0 0 8px; font-size: 14px; color: var(--color-neutral-600); }
   .legal-body { max-width: 72ch; }
   .legal-body h2 { font-family: var(--font-heading); font-weight: 600; font-size: 22px; line-height: 1.2; margin: 36px 0 10px; color: var(--color-accent-900); }

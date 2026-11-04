@@ -258,7 +258,7 @@ class Site:
     def form(self) -> dict[str, str]:
         if not self.key:
             return {"form_action": f"mailto:{esc_attr(self.email)}", "form_enctype": ' enctype="text/plain"',
-                    "form_key": "", "form_hidden": "", "fnote_key": "fNote"}
+                    "form_key": "", "form_hidden": ""}
         hidden = (
             f'        <input type="hidden" name="access_key" value="{esc_attr(self.key)}">\n'
             '        <input type="hidden" name="subject" value="Nueva consulta desde atadvisory.es">\n'
@@ -266,7 +266,7 @@ class Site:
             '        <input type="checkbox" name="botcheck" class="form-trap" tabindex="-1" autocomplete="off" aria-hidden="true">\n'
         )
         return {"form_action": WEB3FORMS, "form_enctype": "", "form_key": esc_attr(self.key),
-                "form_hidden": hidden, "fnote_key": "fNoteSend"}
+                "form_hidden": hidden}
 
     def conditionals(self, markup: str) -> str:
         """Keep or drop <!--if:flag-->…<!--/if--> blocks (e.g. text that only applies when Web3Forms is set up)."""
@@ -285,7 +285,6 @@ class Site:
         markup = self.conditionals(self.layout.replace("{{content}}", read(SRC / template)))
         self._base = base_texts(markup)
         t = self.lookup(lang["code"], self._base)
-        self.used[lang["code"]].update({"fNote", "fNoteSend"})  # only one of the two notes shows, depending on the form setup
         here = self.page_dir(page, lang)
         home_dir = lang["dir"]
         is_home = page["id"] == "home"
