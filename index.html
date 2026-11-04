@@ -168,6 +168,119 @@
   .nav a.nav-brand { display: block; line-height: 0; }
   .nav-brand img { display: block; height: 18px; width: auto; }
   @media (max-width: 400px) { .nav-brand img { height: 14px; } }
+
+  /* ── Visual refresh ─────────────────────────────────────────────── */
+  @keyframes at-pulse { 0%,100% { box-shadow: 0 0 0 0 color-mix(in srgb, #7fd4a8 60%, transparent); } 50% { box-shadow: 0 0 0 6px transparent; } }
+  @keyframes at-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+  @keyframes at-dots { 0%,80%,100% { opacity: .25; } 40% { opacity: 1; } }
+  @keyframes at-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  .hero { position: relative; overflow: hidden; isolation: isolate; }
+  .hero::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+    background:
+      radial-gradient(60% 70% at 85% 10%, color-mix(in srgb, var(--color-accent-500) 45%, transparent), transparent 70%),
+      radial-gradient(45% 55% at 0% 100%, color-mix(in srgb, var(--color-accent-600) 35%, transparent), transparent 70%);
+  }
+  .hero::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: .5;
+    background-image: linear-gradient(color-mix(in srgb, var(--color-bg) 7%, transparent) 1px, transparent 1px),
+      linear-gradient(90deg, color-mix(in srgb, var(--color-bg) 7%, transparent) 1px, transparent 1px);
+    background-size: 56px 56px;
+    -webkit-mask-image: radial-gradient(80% 70% at 70% 30%, #000 20%, transparent 75%);
+            mask-image: radial-gradient(80% 70% at 70% 30%, #000 20%, transparent 75%);
+  }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); align-items: center; }
+  @media (max-width: 980px) { .hero-grid { grid-template-columns: 1fr; } }
+  .hero-kicker { display: inline-flex; align-items: center; gap: 10px; padding: 6px 14px 6px 10px; border-radius: 999px;
+    border: 1px solid color-mix(in srgb, var(--color-bg) 22%, transparent); background: color-mix(in srgb, var(--color-bg) 6%, transparent); }
+  .live-dot { width: 8px; height: 8px; border-radius: 50%; background: #7fd4a8; flex: none; animation: at-pulse 2.4s ease-in-out infinite; }
+  .grad-text { background: linear-gradient(95deg, var(--color-accent-300), var(--color-accent-500) 60%, #a9c9ff);
+    -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+  .ai-demo { position: relative; padding: 22px; border: 1px solid color-mix(in srgb, var(--color-bg) 18%, transparent);
+    background: linear-gradient(160deg, color-mix(in srgb, var(--color-bg) 12%, transparent), color-mix(in srgb, var(--color-bg) 4%, transparent));
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 30px 80px -20px rgba(0,0,0,.55); animation: at-float 7s ease-in-out infinite; }
+  .ai-demo-head { display: flex; align-items: center; gap: 8px; padding-bottom: 14px; margin-bottom: 18px;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-bg) 14%, transparent);
+    font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-accent-300); }
+  .ai-demo-head i { width: 9px; height: 9px; border-radius: 50%; background: color-mix(in srgb, var(--color-bg) 25%, transparent); }
+  .ai-demo-head span { margin-left: auto; }
+  .bubble { max-width: 90%; padding: 12px 14px; font-size: 14.5px; line-height: 1.55; margin-bottom: 14px; }
+  .bubble-user { margin-left: auto; background: var(--color-accent-600); color: #fff; border-radius: 14px 14px 2px 14px; }
+  .bubble-ai { background: color-mix(in srgb, var(--color-bg) 92%, transparent); color: var(--color-accent-900); border-radius: 14px 14px 14px 2px; }
+  .bubble-ai b { color: var(--color-accent-700); }
+  .bubble-ai .who { display: flex; align-items: center; gap: 6px; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--color-accent-600); margin-bottom: 6px; }
+  .bubble-ai .who .ico { width: 14px; height: 14px; }
+  .typing { display: inline-flex; gap: 4px; padding: 12px 14px; border-radius: 14px; background: color-mix(in srgb, var(--color-bg) 12%, transparent); }
+  .typing i { width: 6px; height: 6px; border-radius: 50%; background: var(--color-accent-200); animation: at-dots 1.2s infinite; }
+  .typing i:nth-child(2) { animation-delay: .15s; } .typing i:nth-child(3) { animation-delay: .3s; }
+  .ai-demo-note { font-size: 12px; color: var(--color-accent-300); margin: 4px 0 0; }
+  .ai-demo .bubble-user { animation: at-in .5s .3s both; }
+  .ai-demo .bubble-ai { animation: at-in .6s 1.1s both; }
+
+  .ico { display: block; flex: none; }
+  .ico-box { width: 48px; height: 48px; display: grid; place-items: center; flex: none;
+    background: linear-gradient(140deg, var(--color-accent-100), var(--color-accent-200)); color: var(--color-accent-700);
+    border: 1px solid color-mix(in srgb, var(--color-accent-500) 30%, transparent); transition: transform .3s ease, background .3s ease, color .3s ease; }
+  .lift { position: relative; background: #fff !important; transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease; }
+  .lift::after { content: ""; position: absolute; left: 0; top: 0; height: 3px; width: 100%; transform: scaleX(0); transform-origin: left;
+    background: linear-gradient(90deg, var(--color-accent-700), var(--color-accent-400)); transition: transform .45s ease; }
+  .lift:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -18px color-mix(in srgb, var(--color-accent-900) 45%, transparent); border-color: var(--color-accent-400); }
+  .lift:hover::after { transform: scaleX(1); }
+  .lift:hover .ico-box { background: var(--color-accent-700); color: #fff; transform: rotate(-6deg); }
+  .svc-head { display: flex; align-items: center; justify-content: space-between; }
+
+  .band-soft { background: linear-gradient(180deg, #fff, var(--color-bg)); border-top: 1px solid var(--color-divider); }
+  .aud-card { padding: 24px; background: #fff; border-top: 3px solid var(--color-accent-700); box-shadow: var(--shadow-sm); transition: transform .3s ease, box-shadow .3s ease; }
+  .aud-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .aud-card .ico-box { margin-bottom: 18px; }
+
+  .work { position: relative; overflow: hidden; isolation: isolate; background: var(--color-accent-900); color: var(--color-bg); }
+  .work::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+    background: radial-gradient(50% 60% at 100% 0%, color-mix(in srgb, var(--color-accent-500) 30%, transparent), transparent 70%),
+                radial-gradient(40% 50% at 0% 100%, color-mix(in srgb, var(--color-accent-600) 25%, transparent), transparent 70%); }
+  .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(20px, 2.5vw, 32px); }
+  @media (max-width: 1000px) { .work-grid { grid-template-columns: 1fr; } }
+  .work-card { display: flex; flex-direction: column; gap: 14px; padding: clamp(24px, 2.6vw, 34px);
+    border: 1px solid color-mix(in srgb, var(--color-bg) 16%, transparent);
+    background: linear-gradient(170deg, color-mix(in srgb, var(--color-bg) 9%, transparent), color-mix(in srgb, var(--color-bg) 2%, transparent));
+    transition: transform .3s ease, border-color .3s ease, background .3s ease; }
+  .work-card:hover { transform: translateY(-4px); border-color: var(--color-accent-400); }
+  .work-card .ico-box { background: color-mix(in srgb, var(--color-accent-400) 18%, transparent); color: var(--color-accent-200); border-color: color-mix(in srgb, var(--color-accent-300) 30%, transparent); }
+  .work-card h3 { font-family: var(--font-heading); font-weight: 600; font-size: 30px; line-height: 1.05; text-transform: uppercase; margin: 4px 0 0; }
+  .work-card .work-kind { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--color-accent-400); }
+  .work-card p { font-size: 15px; line-height: 1.65; margin: 0; color: var(--color-accent-200); flex: 1; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; padding-top: 14px; border-top: 1px solid color-mix(in srgb, var(--color-bg) 14%, transparent); }
+  .chips span { font-size: 11.5px; padding: 3px 9px; border-radius: 999px; color: var(--color-accent-100); background: color-mix(in srgb, var(--color-bg) 9%, transparent); border: 1px solid color-mix(in srgb, var(--color-bg) 14%, transparent); }
+
+  .eng-featured { background: var(--color-accent-900) !important; color: var(--color-bg); border-color: var(--color-accent-900) !important; }
+  .eng-featured h3 { color: var(--color-bg) !important; }
+  .eng-featured p { color: var(--color-accent-200) !important; }
+  .eng-featured .tag { background: var(--color-accent-600); color: #fff; }
+
+  .about-photo { position: relative; display: flex; align-items: flex-end; justify-content: center; min-height: 340px; isolation: isolate; }
+  .about-photo::before { content: ""; position: absolute; z-index: -1; left: 50%; bottom: 0; width: min(92%, 340px); aspect-ratio: 1; transform: translateX(-50%);
+    border-radius: 50%; background: radial-gradient(circle at 30% 30%, var(--color-accent-300), var(--color-accent-700)); }
+  .about-photo::after { content: ""; position: absolute; z-index: -2; left: 50%; bottom: -14px; width: min(100%, 380px); aspect-ratio: 1; transform: translateX(-50%);
+    border-radius: 50%; border: 1px dashed var(--color-accent-400); }
+  .about-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
+  .about-badges span { font-size: 12.5px; padding: 6px 12px; background: #fff; border: 1px solid var(--color-divider); color: var(--color-accent-800); }
+
+  .contact { position: relative; overflow: hidden; isolation: isolate; }
+  .contact::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+    background: radial-gradient(50% 70% at 100% 100%, color-mix(in srgb, var(--color-accent-500) 35%, transparent), transparent 70%); }
+
+  html { scroll-padding-top: 76px; }
+  @media (max-width: 760px) { html { scroll-padding-top: 0; } .nav-sticky { position: relative !important; } }
+  .nav-sticky { position: sticky; top: 0; z-index: 40; background: color-mix(in srgb, var(--color-bg) 88%, transparent);
+    backdrop-filter: saturate(1.4) blur(10px); -webkit-backdrop-filter: saturate(1.4) blur(10px); border-bottom: 1px solid var(--color-divider); }
+
+  .reveal-ready [data-reveal] { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+  .reveal-ready [data-reveal][data-in] { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .ai-demo, .live-dot, .typing i, .ai-demo .bubble-user, .ai-demo .bubble-ai { animation: none !important; }
+    .reveal-ready [data-reveal] { opacity: 1; transform: none; transition: none; }
+    .lift, .aud-card, .work-card, .ico-box { transition: none; }
+  }
 </style>
 <script src="./support.js"></script>
 </head>
@@ -177,7 +290,7 @@
 </helmet>
 <div ref="{{ rootRef }}" style="background: var(--color-bg)">
 
-  <nav class="nav" style="padding-inline: max(clamp(20px,5vw,64px), calc((100% - 1240px) / 2 + clamp(20px,5vw,64px)))">
+  <nav class="nav nav-sticky" style="padding-inline: max(clamp(20px,5vw,64px), calc((100% - 1240px) / 2 + clamp(20px,5vw,64px)))">
     <a class="nav-brand" href="#"><img src="./logo-wordmark.svg" alt="AT Advisory" /></a>
     <input class="nav-toggle-control" id="nav-toggle" type="checkbox" />
     <label class="nav-toggle-label btn btn-ghost" for="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></label>
@@ -185,6 +298,7 @@
       <a href="#about" data-i18n="navAbout">Sobre mí</a>
       <a href="#method" data-i18n="navMethod">Método</a>
       <a href="#services" data-i18n="navServices">Servicios</a>
+      <a href="#work" data-i18n="navWork">Proyectos</a>
       <a href="#audience" data-i18n="navAudience">Para quién</a>
       <a href="#engagement" data-i18n="navEngagement">Cómo trabajamos</a>
       <a href="#contact" data-i18n="navContact">Contacto</a>
@@ -200,17 +314,31 @@
     <a href="#contact" class="nav-cta btn btn-primary" data-i18n="navCta" style="text-decoration: none; white-space: nowrap; flex: 0 0 auto">Hablemos</a>
   </nav>
 
-  <section style="background: var(--color-accent-900); color: var(--color-bg)">
-    <div style="max-width: 1240px; margin: 0 auto; padding: clamp(64px,9vw,128px) clamp(20px,5vw,64px) 0">
-      <span style="display: block; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-accent-300); margin-bottom: 28px" data-i18n="heroKicker">Digitalización e IA para pymes · Madrid</span>
-      <h1 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(46px,7.4vw,104px); line-height: 0.94; letter-spacing: -0.015em; text-transform: uppercase; margin: 0; max-width: 20ch">
+  <section class="hero" style="background: var(--color-accent-900); color: var(--color-bg)">
+    <div style="max-width: 1240px; margin: 0 auto; padding: clamp(56px,8vw,112px) clamp(20px,5vw,64px) 0">
+      <div class="hero-grid">
+      <div>
+      <span class="hero-kicker" style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-accent-200); margin-bottom: 28px"><i class="live-dot"></i><span data-i18n="heroKicker">Digitalización e IA para pymes · Madrid</span></span>
+      <h1 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(44px,6.2vw,92px); line-height: 0.94; letter-spacing: -0.015em; text-transform: uppercase; margin: 0; max-width: 20ch">
         <span style="display: block" data-i18n="heroLine1">Moderniza tu negocio</span>
-        <span style="display: block; color: var(--color-accent-400)" data-i18n="heroLine2">y que la IA te recomiende.</span>
+        <span class="grad-text" style="display: block" data-i18n="heroLine2">y que la IA te recomiende.</span>
       </h1>
       <p style="font-size: 17px; line-height: 1.7; max-width: 62ch; margin: 32px 0 0; color: var(--color-accent-200)" data-i18n="heroSub">Ayudo a pymes y microempresas a modernizarse: digitalizar su forma de trabajar, incorporar inteligencia artificial donde de verdad aporta y lograr que, cuando alguien pregunte a una IA por lo que ofreces, tu negocio aparezca entre sus recomendaciones. Y si quieres crecer, te guío paso a paso para no empezar la casa por el tejado.</p>
       <div style="display: flex; gap: var(--space-3); flex-wrap: wrap; margin-top: 36px">
         <a href="#contact" class="btn btn-primary blueprint" data-i18n="heroCta1" style="text-decoration: none; white-space: nowrap; flex: 0 0 auto"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>Hablemos de tu negocio</a>
         <a href="#method" class="btn btn-ghost" data-i18n="heroCta2" style="text-decoration: none; white-space: nowrap; flex: 0 0 auto; color: var(--color-bg); border-color: color-mix(in srgb, var(--color-bg) 45%, transparent)">Cómo trabajo</a>
+      </div>
+      </div>
+      <div class="ai-demo" aria-label="Ejemplo ilustrativo de un asistente de IA recomendando un negocio">
+        <div class="ai-demo-head"><i></i><i></i><i></i><span data-i18n="demoHead">Asistente de IA</span></div>
+        <div class="bubble bubble-user" data-i18n="demoQ">¿Qué taller de bicicletas cerca de mí abre los sábados y tiene buenas reseñas?</div>
+        <div class="bubble bubble-ai">
+          <div class="who"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 16l.7 1.8 1.8.7-1.8.7L19 21l-.7-1.8-1.8-.7 1.8-.7z"/></svg><span data-i18n="demoWho">Respuesta</span></div>
+          <span data-i18n="demoA1">Te recomiendo</span> <b data-i18n="demoA2">tu negocio</b><span data-i18n="demoA3">: abre los sábados de 10 a 14 h, tiene una valoración de 4,8 y puedes reservar cita en su web.</span>
+        </div>
+        <div class="typing" aria-hidden="true"><i></i><i></i><i></i></div>
+        <p class="ai-demo-note" data-i18n="demoNote">Ejemplo ilustrativo: así es como queremos que te encuentren.</p>
+      </div>
       </div>
 
       <div style="margin-top: clamp(56px,7vw,96px); border-top: 1px solid color-mix(in srgb, var(--color-bg) 22%, transparent); display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr))">
@@ -242,7 +370,7 @@
       <p style="font-size: 17px; line-height: 1.7; max-width: 64ch; margin: 0 0 clamp(36px,4vw,56px); color: var(--color-neutral-800)" data-i18n="methodIntro">La tecnología funciona cuando se incorpora en el orden adecuado. Primero entendemos tu negocio y ponemos unos cimientos sólidos; después añadimos IA donde aporta valor real; y, por último, nos aseguramos de que tanto tus clientes como los asistentes de IA puedan encontrarte.</p>
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: clamp(20px,2.5vw,32px)">
-        <div class="card blueprint verdict" style="padding: clamp(24px,2.6vw,36px); background: var(--color-accent-900); color: var(--color-bg); border-color: var(--color-accent-900)">
+        <div data-reveal="" class="card blueprint verdict" style="padding: clamp(24px,2.6vw,36px); background: var(--color-accent-900); color: var(--color-bg); border-color: var(--color-accent-900)">
           <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
           <div style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-accent-400)" data-i18n="v1Tag">Paso 01</div>
           <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 34px; line-height: 1.05; text-transform: uppercase; margin: 12px 0 12px" data-i18n="v1Title">Poner los cimientos</h3>
@@ -253,7 +381,7 @@
             <li data-i18n="v1Sig3">Una web anticuada, lenta o difícil de actualizar</li>
           </ul>
         </div>
-        <div class="card blueprint verdict" style="padding: clamp(24px,2.6vw,36px)">
+        <div data-reveal="" class="card blueprint verdict lift" style="padding: clamp(24px,2.6vw,36px)">
           <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
           <div style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-accent-600)" data-i18n="v2Tag">Paso 02</div>
           <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 34px; line-height: 1.05; text-transform: uppercase; margin: 12px 0 12px; color: var(--color-accent-900)" data-i18n="v2Title">Añadir IA donde compensa</h3>
@@ -264,7 +392,7 @@
             <li data-i18n="v2Sig3">Documentación que cuesta encontrar cuando se necesita</li>
           </ul>
         </div>
-        <div class="card blueprint verdict" style="padding: clamp(24px,2.6vw,36px)">
+        <div data-reveal="" class="card blueprint verdict lift" style="padding: clamp(24px,2.6vw,36px)">
           <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
           <div style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-accent-600)" data-i18n="v3Tag">Paso 03</div>
           <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 34px; line-height: 1.05; text-transform: uppercase; margin: 12px 0 12px; color: var(--color-accent-900)" data-i18n="v3Title">Que la IA te encuentre</h3>
@@ -288,62 +416,100 @@
       <h2 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(32px,4.2vw,56px); line-height: 1.02; text-transform: uppercase; letter-spacing: -0.01em; margin: 0 0 clamp(36px,4vw,56px); color: var(--color-accent-900); max-width: 24ch" data-i18n="servicesTitle">Tecnología útil, explicada con claridad y en el orden correcto</h2>
 
       <div class="svc-grid">
-        <div class="card blueprint" style="padding: clamp(24px,2.6vw,36px)">
+        <div data-reveal="" class="card blueprint lift" style="padding: clamp(24px,2.6vw,36px)">
           <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-          <div style="font-family: var(--font-heading); font-weight: 600; font-size: 40px; line-height: 1; color: var(--color-accent-400)">01</div>
+          <div class="svc-head"><div class="ico-box"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/><path d="M8.5 11h5M11 8.5v5"/></svg></div><div style="font-family: var(--font-heading); font-weight: 600; font-size: 40px; line-height: 1; color: var(--color-accent-300)">01</div></div>
           <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 26px; line-height: 1.12; text-transform: uppercase; margin: 16px 0 12px; color: var(--color-accent-900)" data-i18n="svc1Title">Diagnóstico digital y de visibilidad en IA</h3>
           <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="svc1Text">Revisamos cómo funciona hoy tu negocio y cómo te encuentran los clientes y los asistentes de IA. Recibes un informe claro: qué corregir primero, qué puede esperar y cuánto costará en tiempo y dinero.</p>
         </div>
-        <div class="card blueprint" style="padding: clamp(24px,2.6vw,36px)">
+        <div data-reveal="" class="card blueprint lift" style="padding: clamp(24px,2.6vw,36px)">
           <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-          <div style="font-family: var(--font-heading); font-weight: 600; font-size: 40px; line-height: 1; color: var(--color-accent-400)">02</div>
+          <div class="svc-head"><div class="ico-box"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="7" height="6" rx="1"/><rect x="14" y="14" width="7" height="6" rx="1"/><path d="M6.5 10v4a3 3 0 0 0 3 3H14"/><path d="M17.5 14v-4a3 3 0 0 0-3-3H10"/></svg></div><div style="font-family: var(--font-heading); font-weight: 600; font-size: 40px; line-height: 1; color: var(--color-accent-300)">02</div></div>
           <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 26px; line-height: 1.12; text-transform: uppercase; margin: 16px 0 12px; color: var(--color-accent-900)" data-i18n="svc2Title">Digitalización de procesos y herramientas</h3>
           <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="svc2Text">Sustituimos papeles, hojas de cálculo dispersas y tareas repetitivas por herramientas sencillas: gestión de clientes, reservas, facturación, automatizaciones. Elegidas según tu tamaño y presupuesto, y puestas en marcha para que el equipo las use de verdad.</p>
         </div>
-        <div class="card blueprint" style="padding: clamp(24px,2.6vw,36px)">
+        <div data-reveal="" class="card blueprint lift" style="padding: clamp(24px,2.6vw,36px)">
           <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-          <div style="font-family: var(--font-heading); font-weight: 600; font-size: 40px; line-height: 1; color: var(--color-accent-400)">03</div>
+          <div class="svc-head"><div class="ico-box"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 16l.7 1.8 1.8.7-1.8.7L19 21l-.7-1.8-1.8-.7 1.8-.7z"/></svg></div><div style="font-family: var(--font-heading); font-weight: 600; font-size: 40px; line-height: 1; color: var(--color-accent-300)">03</div></div>
           <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 26px; line-height: 1.12; text-transform: uppercase; margin: 16px 0 12px; color: var(--color-accent-900)" data-i18n="svc3Title">Integración práctica de IA</h3>
           <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="svc3Text">Asistentes para la atención al cliente, borradores automáticos, resúmenes de documentos, búsqueda interna… Empezamos por un caso de uso concreto, medimos el resultado y solo entonces ampliamos, cuidando la protección de datos desde el primer día.</p>
         </div>
-        <div class="card blueprint" style="padding: clamp(24px,2.6vw,36px)">
+        <div data-reveal="" class="card blueprint lift" style="padding: clamp(24px,2.6vw,36px)">
           <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-          <div style="font-family: var(--font-heading); font-weight: 600; font-size: 40px; line-height: 1; color: var(--color-accent-400)">04</div>
+          <div class="svc-head"><div class="ico-box"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></svg></div><div style="font-family: var(--font-heading); font-weight: 600; font-size: 40px; line-height: 1; color: var(--color-accent-300)">04</div></div>
           <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 26px; line-height: 1.12; text-transform: uppercase; margin: 16px 0 12px; color: var(--color-accent-900)" data-i18n="svc4Title">Visibilidad en asistentes de IA y buscadores</h3>
           <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="svc4Text">Preparamos tu web, tu ficha de Google, los directorios y los contenidos para que ChatGPT, Gemini, Perplexity y los buscadores entiendan qué ofreces, dónde y para quién, y puedan recomendarte cuando alguien lo necesite.</p>
         </div>
-        <div class="card blueprint" style="padding: clamp(24px,2.6vw,36px)">
+        <div data-reveal="" class="card blueprint lift" style="padding: clamp(24px,2.6vw,36px)">
           <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-          <div style="font-family: var(--font-heading); font-weight: 600; font-size: 40px; line-height: 1; color: var(--color-accent-400)">05</div>
+          <div class="svc-head"><div class="ico-box"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M3 8.5h18"/><circle cx="6" cy="6.3" r=".5"/><path d="M7 13h6M7 16h10"/></svg></div><div style="font-family: var(--font-heading); font-weight: 600; font-size: 40px; line-height: 1; color: var(--color-accent-300)">05</div></div>
           <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 26px; line-height: 1.12; text-transform: uppercase; margin: 16px 0 12px; color: var(--color-accent-900)" data-i18n="svc5Title">Web moderna y presencia online</h3>
           <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="svc5Text">Una web rápida y clara que explica lo que haces, pensada para convertir visitas en contactos y para que la entiendan tanto las personas como las máquinas. Fácil de actualizar sin depender de nadie.</p>
         </div>
-        <div class="card blueprint" style="padding: clamp(24px,2.6vw,36px)">
+        <div data-reveal="" class="card blueprint lift" style="padding: clamp(24px,2.6vw,36px)">
           <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-          <div style="font-family: var(--font-heading); font-weight: 600; font-size: 40px; line-height: 1; color: var(--color-accent-400)">06</div>
+          <div class="svc-head"><div class="ico-box"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20h18"/><path d="M5 16l5-5 3.5 3.5L20 8"/><path d="M15 8h5v5"/></svg></div><div style="font-family: var(--font-heading); font-weight: 600; font-size: 40px; line-height: 1; color: var(--color-accent-300)">06</div></div>
           <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 26px; line-height: 1.12; text-transform: uppercase; margin: 16px 0 12px; color: var(--color-accent-900)" data-i18n="svc6Title">Crecer con tecnología, paso a paso</h3>
           <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="svc6Text">¿Una nueva línea de negocio, otro mercado, una tienda online o más locales? Trazamos la hoja de ruta: qué montar primero, qué contratar y cuándo, y qué indicadores te dirán que funciona, para que el crecimiento se apoye en terreno firme.</p>
         </div>
       </div>
     </section>
+  </div>
 
-    <section id="audience" style="padding: clamp(40px,5vw,72px) 0">
+  <section id="work" class="work">
+    <div style="max-width: 1240px; margin: 0 auto; padding: clamp(64px,8vw,112px) clamp(20px,5vw,64px)">
+      <span style="display: block; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-accent-400); margin-bottom: 20px" data-i18n="workKicker">Lo que he construido</span>
+      <h2 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(32px,4.2vw,56px); line-height: 1.02; text-transform: uppercase; letter-spacing: -0.01em; margin: 0 0 20px; max-width: 22ch" data-i18n="workTitle">No solo asesoro: también construyo</h2>
+      <p style="font-size: 17px; line-height: 1.7; max-width: 64ch; margin: 0 0 clamp(36px,4vw,56px); color: var(--color-accent-200)" data-i18n="workIntro">Algunos productos que he diseñado y desarrollado de principio a fin. La misma forma de trabajar que aplico con cada cliente: entender bien el problema, empezar por lo esencial y dejar algo que se pueda mantener.</p>
+      <div class="work-grid">
+        <article data-reveal="" class="work-card">
+          <div class="ico-box"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5c-2 3-2 7 0 8.5s6 2 8.3 1"/><path d="M5 7c3 0 6 1.5 7 5s-1 6.5-3 8"/></svg></div>
+          <div class="work-kind" data-i18n="w1Kind">Gestión deportiva</div>
+          <h3>Rotación</h3>
+          <p data-i18n="w1Text">Aplicación para clubes de voleibol: equipos, jugadores, competiciones, arbitraje y roles con permisos por club. Funciona en el móvil como una app.</p>
+          <div class="chips"><span>React</span><span>Spring Boot</span><span>PostgreSQL</span><span>PWA</span></div>
+        </article>
+        <article data-reveal="" class="work-card">
+          <div class="ico-box"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8.5 8h7M8.5 11.5h7M8.5 15h4"/><path d="M15 15.5l1 1 2-2"/></svg></div>
+          <div class="work-kind" data-i18n="w2Kind">Digitalización de un proceso en papel</div>
+          <h3 data-i18n="w2Title">Acta digital</h3>
+          <p data-i18n="w2Text">El acta de un partido, del papel a la tablet: funciona sin conexión, se sigue en directo y al cerrarse se envía firmada a la liga, en PDF oficial y Excel.</p>
+          <div class="chips"><span>Android · iOS</span><span>Offline</span><span>TypeScript</span><span>API</span></div>
+        </article>
+        <article data-reveal="" class="work-card">
+          <div class="ico-box"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 16a8 8 0 0 1 16 0"/><path d="M3 16h18v2.5H3z"/><path d="M10 8.5V6h4v2.5"/></svg></div>
+          <div class="work-kind" data-i18n="w3Kind">Marketplace B2B</div>
+          <h3>Vigía</h3>
+          <p data-i18n="w3Text">Plataforma que conecta constructoras con profesionales de seguridad en obra, con verificación de identidad automática que respeta la privacidad: el documento se lee en local, sin enviarlo a la nube.</p>
+          <div class="chips"><span>Marketplace</span><span data-i18n="w3Chip">OCR local</span><span>Spring Boot</span><span>Docker</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div style="max-width: 1240px; margin: 0 auto; padding: 0 clamp(20px,5vw,64px)">
+
+    <section id="audience" style="padding: clamp(56px,7vw,96px) 0 clamp(40px,5vw,72px)">
       <span style="display: block; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 16px" data-i18n="audKicker">Para quién</span>
       <p style="font-size: 17px; line-height: 1.7; max-width: 64ch; margin: 0 0 32px; color: var(--color-neutral-800)" data-i18n="audIntro">Mi foco son las pymes y las microempresas: negocios con poco tiempo, presupuesto ajustado y mucho por hacer. Sea cual sea tu sector, si quieres modernizarte o crecer con tecnología, puedo ayudarte a hacerlo bien.</p>
       <div class="aud-grid">
-        <div style="border-top: 2px solid var(--color-accent-900); padding-top: 20px">
+        <div data-reveal="" class="aud-card">
+          <div class="ico-box"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20a7 7 0 0 1 14 0"/></svg></div>
           <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 1.15; text-transform: uppercase; margin: 0 0 12px; color: var(--color-accent-900)" data-i18n="aud1Title">Microempresas y autónomos</h3>
           <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="aud1Text">Eres a la vez ventas, administración y atención al cliente. Te liberamos tiempo con unas pocas herramientas bien elegidas y nos aseguramos de que tus clientes te encuentren.</p>
         </div>
-        <div style="border-top: 2px solid var(--color-accent-900); padding-top: 20px">
+        <div data-reveal="" class="aud-card">
+          <div class="ico-box"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="10" height="18"/><path d="M14 9h6v12h-6"/><path d="M7 7h1M10 7h1M7 11h1M10 11h1M7 15h1M10 15h1"/></svg></div>
           <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 1.15; text-transform: uppercase; margin: 0 0 12px; color: var(--color-accent-900)" data-i18n="aud2Title">Pymes y empresas familiares</h3>
           <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="aud2Text">Años de costumbres, archivos y herramientas que ya no encajan. Ponemos orden, modernizamos lo que más importa y preparamos el negocio para su siguiente etapa.</p>
         </div>
-        <div style="border-top: 2px solid var(--color-accent-900); padding-top: 20px">
+        <div data-reveal="" class="aud-card">
+          <div class="ico-box"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9l1.5-5h13L20 9"/><path d="M4 9a2.7 2.7 0 0 0 5.3 0 2.7 2.7 0 0 0 5.4 0 2.7 2.7 0 0 0 5.3 0"/><path d="M5 11v9h14v-9"/><path d="M10 20v-5h4v5"/></svg></div>
           <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 1.15; text-transform: uppercase; margin: 0 0 12px; color: var(--color-accent-900)" data-i18n="aud3Title">Comercios y negocios de servicios</h3>
           <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="aud3Text">Tiendas, restaurantes, clínicas, talleres, despachos, agencias… Cuando alguien pregunte a una IA por lo que haces, tu negocio debería formar parte de la respuesta.</p>
         </div>
-        <div style="border-top: 2px solid var(--color-accent-900); padding-top: 20px">
+        <div data-reveal="" class="aud-card">
+          <div class="ico-box"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15l-3-3c1.5-5 5-8 10-8 0 5-3 8.5-8 10z"/><path d="M9 12l-4 1 2-4h4M12 15l-1 4 4-2v-4"/><circle cx="15" cy="9" r="1.2"/></svg></div>
           <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 1.15; text-transform: uppercase; margin: 0 0 12px; color: var(--color-accent-900)" data-i18n="aud4Title">Empresas que quieren crecer</h3>
           <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="aud4Text">Un nuevo local, otro mercado, un canal online o un servicio nuevo. Te acompaño en los pasos tecnológicos, en el orden adecuado, para crecer sin improvisar.</p>
         </div>
@@ -353,19 +519,19 @@
     <section id="engagement" style="padding: clamp(40px,5vw,72px) 0">
       <span style="display: block; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 32px" data-i18n="engKicker">Cómo trabajamos</span>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: clamp(20px,2.5vw,32px)">
-        <div class="card blueprint" style="padding: clamp(22px,2.4vw,32px)">
+        <div data-reveal="" class="card blueprint lift" style="padding: clamp(22px,2.4vw,32px)">
           <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
           <span class="tag tag-accent" data-i18n="eng1Tag">Una jornada</span>
           <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 1.15; text-transform: uppercase; margin: 16px 0 12px; color: var(--color-accent-900)" data-i18n="eng1Title">Diagnóstico digital y de IA</h3>
           <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="eng1Text">Un día, en remoto o presencial, para revisar tu situación digital y cómo ven tu negocio los asistentes de IA. Te llevas un informe por escrito y una lista de acciones priorizada.</p>
         </div>
-        <div class="card blueprint" style="padding: clamp(22px,2.4vw,32px)">
+        <div data-reveal="" class="card blueprint eng-featured" style="padding: clamp(22px,2.4vw,32px)">
           <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
           <span class="tag tag-accent" data-i18n="eng2Tag">Semanas</span>
           <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 1.15; text-transform: uppercase; margin: 16px 0 12px; color: var(--color-accent-900)" data-i18n="eng2Title">Plan de modernización y puesta en marcha</h3>
           <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: var(--color-neutral-800)" data-i18n="eng2Text">Unas semanas para llevar el plan a la práctica: cimientos digitales, primeras automatizaciones o casos de IA y mejoras de visibilidad, junto a tu equipo y con formación incluida.</p>
         </div>
-        <div class="card blueprint" style="padding: clamp(22px,2.4vw,32px)">
+        <div data-reveal="" class="card blueprint lift" style="padding: clamp(22px,2.4vw,32px)">
           <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
           <span class="tag tag-accent" data-i18n="eng3Tag">Días al mes</span>
           <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 1.15; text-transform: uppercase; margin: 16px 0 12px; color: var(--color-accent-900)" data-i18n="eng3Title">Acompañamiento continuo</h3>
@@ -415,13 +581,14 @@
       <h2 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(34px,4.5vw,60px); line-height: 1.02; text-transform: uppercase; margin: 0 0 24px; color: var(--color-accent-900); max-width: 12ch" data-i18n="aboutTitle">La persona detrás del plan</h2>
       <p style="font-size: 17px; line-height: 1.75; margin: 0 0 18px; color: var(--color-neutral-800)" data-i18n="aboutText1">Soy Aarón Ayllón Benítez, doctor en Informática y asesor en tecnología e inteligencia artificial. Me gusta ayudar a los pequeños negocios a sacar partido de la tecnología de forma práctica y honesta, sin jerga ni gastos innecesarios.</p>
       <p style="font-size: 17px; line-height: 1.75; margin: 0; color: var(--color-neutral-800)" data-i18n="aboutText2">He sido responsable de plataformas corporativas de IA, he creado productos desde cero y he cofundado una plataforma B2B. Pongo esa experiencia al servicio de pymes y microempresas, traducida en pasos concretos que puedes entender, aplicar y mantener.</p>
+      <div class="about-badges"><span data-i18n="badge1">Doctor en Informática</span><span data-i18n="badge2">Máster en IA</span><span>BASF Digital Solutions</span><span data-i18n="badge3">Cofundador B2B</span></div>
     </div>
-    <div class="about-image" style="min-height: 280px; display: flex; align-items: flex-end; justify-content: center; overflow: hidden">
-      <img src="Aaron_sin_fondo.png" alt="Aarón Ayllón Benítez" style="display: block; width: min(100%, 260px); max-height: 360px; object-fit: contain; object-position: bottom center" />
+    <div class="about-image about-photo">
+      <img src="Aaron_sin_fondo.png" alt="Aarón Ayllón Benítez" style="display: block; width: min(100%, 300px); max-height: 400px; object-fit: contain; object-position: bottom center" />
     </div>
   </section>
 
-  <section id="contact" style="background: var(--color-accent-900); color: var(--color-bg); margin-top: clamp(40px,5vw,72px)">
+  <section id="contact" class="contact" style="background: var(--color-accent-900); color: var(--color-bg); margin-top: clamp(40px,5vw,72px)">
     <div style="max-width: 1240px; margin: 0 auto; padding: clamp(56px,7vw,96px) clamp(20px,5vw,64px); display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(32px,5vw,80px); align-items: start">
       <div>
         <span style="display: block; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-accent-400); margin-bottom: 20px" data-i18n="contactKicker">Contacto</span>
@@ -573,6 +740,28 @@ const I18N = {
     fMsg: "Tell me what you would like to improve",
     fSend: "Send enquiry",
     fNote: "Opens your mail client with the message filled in.",
+    navWork: "Projects",
+    demoHead: "AI assistant",
+    demoQ: "Which bike repair shop near me opens on Saturdays and has good reviews?",
+    demoWho: "Answer",
+    demoA1: "I'd recommend",
+    demoA2: "your business",
+    demoA3: ": it opens on Saturdays from 10am to 2pm, has a 4.8 rating and you can book online.",
+    demoNote: "Illustrative example: this is how we want you to be found.",
+    workKicker: "What I have built",
+    workTitle: "I don't just advise: I build too",
+    workIntro: "Some products I have designed and built from start to finish. The same approach I bring to every client: understand the problem well, start with the essentials and leave something that can be maintained.",
+    w1Kind: "Sports management",
+    w1Text: "An app for volleyball clubs: teams, players, competitions, referees and club-scoped roles and permissions. It works on your phone like a native app.",
+    w2Kind: "Digitalising a paper process",
+    w2Title: "Digital scoresheet",
+    w2Text: "The match scoresheet, from paper to tablet: it works offline, can be followed live and, once closed, is sent signed to the league as an official PDF and Excel file.",
+    w3Kind: "B2B marketplace",
+    w3Text: "A platform connecting construction companies with on-site safety professionals, with automatic, privacy-friendly identity checks: the document is read locally, never sent to the cloud.",
+    w3Chip: "Local OCR",
+    badge1: "PhD in Computer Science",
+    badge2: "MSc in AI",
+    badge3: "B2B co-founder",
     footBrand: "Ayllon Tech Advisory (AT Advisory) · Madrid, Spain"
   },
   fr: {
@@ -681,6 +870,28 @@ const I18N = {
     fMsg: "Dites-moi ce que vous aimeriez améliorer",
     fSend: "Envoyer la demande",
     fNote: "Ouvre votre messagerie avec le message pré-rempli.",
+    navWork: "Projets",
+    demoHead: "Assistant IA",
+    demoQ: "Quel atelier vélo près de chez moi ouvre le samedi et a de bons avis ?",
+    demoWho: "Réponse",
+    demoA1: "Je vous recommande",
+    demoA2: "votre entreprise",
+    demoA3: " : ouvert le samedi de 10 h à 14 h, noté 4,8 et réservation en ligne possible.",
+    demoNote: "Exemple illustratif : voici comment nous voulons que l'on vous trouve.",
+    workKicker: "Ce que j'ai construit",
+    workTitle: "Je ne fais pas que conseiller : je construis aussi",
+    workIntro: "Quelques produits que j'ai conçus et développés de bout en bout. La même méthode que j'applique avec chaque client : bien comprendre le problème, commencer par l'essentiel et laisser quelque chose de maintenable.",
+    w1Kind: "Gestion sportive",
+    w1Text: "Une application pour les clubs de volley-ball : équipes, joueurs, compétitions, arbitrage et rôles avec permissions par club. Elle fonctionne sur mobile comme une application native.",
+    w2Kind: "Numériser un processus papier",
+    w2Title: "Feuille de match numérique",
+    w2Text: "La feuille de match, du papier à la tablette : elle fonctionne hors connexion, se suit en direct et, une fois clôturée, est envoyée signée à la ligue en PDF officiel et en Excel.",
+    w3Kind: "Marketplace B2B",
+    w3Text: "Une plateforme qui met en relation entreprises de construction et professionnels de la sécurité sur chantier, avec une vérification d'identité automatique et respectueuse de la vie privée : le document est lu en local, sans passer par le cloud.",
+    w3Chip: "OCR local",
+    badge1: "Docteur en informatique",
+    badge2: "Master en IA",
+    badge3: "Cofondateur B2B",
     footBrand: "Ayllon Tech Advisory (AT Advisory) · Madrid, Espagne"
   }
 };
@@ -709,6 +920,29 @@ class Component extends DCLogic {
   componentDidMount() {
     const start = this.props.defaultLanguage || 'es';
     this.apply(start);
+    this.reveal();
+  }
+
+  reveal() {
+    if (window.__atReveal) return;
+    window.__atReveal = true;
+    const check = () => {
+      const limit = window.innerHeight * 0.92;
+      document.querySelectorAll('[data-reveal]:not([data-in])').forEach((el) => {
+        if (el.getBoundingClientRect().top < limit) {
+          const sibs = [...el.parentElement.children].filter((c) => c.hasAttribute('data-reveal'));
+          el.style.transitionDelay = Math.max(0, sibs.indexOf(el)) * 90 + 'ms';
+          el.setAttribute('data-in', '');
+        }
+      });
+    };
+    let queued = false;
+    const onScroll = () => { if (queued) return; queued = true; requestAnimationFrame(() => { queued = false; check(); }); };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    document.documentElement.classList.add('reveal-ready');
+    requestAnimationFrame(check);
+    setTimeout(check, 300);
   }
 
   snapshot() {
