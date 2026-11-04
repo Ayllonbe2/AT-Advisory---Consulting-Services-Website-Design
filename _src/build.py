@@ -28,6 +28,7 @@ TAG = re.compile(r"<\s*(/)?\s*([a-zA-Z][\w-]*)")
 VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "source", "track", "wbr"}
 I18N_ATTR = re.compile(r'\sdata-i18n="([^"]+)"')
 PLACEHOLDER = re.compile(r"\{\{([^{}]+)\}\}")
+CONDITIONAL = re.compile(r"<!--if:(\w+)-->(.*?)<!--/if-->", re.S)
 
 
 class BuildError(Exception):
@@ -267,9 +268,21 @@ class Site:
         return {"form_action": WEB3FORMS, "form_enctype": "", "form_key": esc_attr(self.key),
                 "form_hidden": hidden, "fnote_key": "fNoteSend"}
 
+    def conditionals(self, markup: str) -> str:
+        """Keep or drop <!--if:flag-->…<!--/if--> blocks (e.g. text that only applies when Web3Forms is set up)."""
+        flags = {"web3forms": bool(self.key)}
+
+        def repl(m):
+            if m.group(1) not in flags:
+                raise BuildError(f"condición desconocida <!--if:{m.group(1)}-->")
+            return m.group(2) if flags[m.group(1)] else ""
+        return CONDITIONAL.sub(repl, markup)
+
     def render(self, page: dict, lang: dict) -> str:
-        content = read(SRC / page["template"])
-        markup = self.layout.replace("{{content}}", content)
+        template = page["template"]
+        if isinstance(template, dict):  # long-form pages (e.g. legal text) can have one template per language
+            template = template[lang["code"]]
+        markup = self.conditionals(self.layout.replace("{{content}}", read(SRC / template)))
         self._base = base_texts(markup)
         t = self.lookup(lang["code"], self._base)
         self.used[lang["code"]].update({"fNote", "fNoteSend"})  # only one of the two notes shows, depending on the form setup
@@ -290,6 +303,8 @@ class Site:
         for other in self.langs:
             values[f"alt:{other['code']}"] = rel(here, self.page_dir(page, other))
             values[f"cur:{other['code']}"] = ' aria-current="page"' if other is lang else ""
+        for target in self.config["pages"]:  # {{page:id}} links to another page in the same language
+            values[f"page:{target['id']}"] = rel(here, self.page_dir(target, lang))
         values["head"] = self.head(page, lang, t)
         out = translate(fill(markup, values, t), t)
         if "{{" in out.replace(values["head"], "") or "data-i18n" in out:

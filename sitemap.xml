@@ -21,4 +21,25 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://atadvisory.es/fr/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://atadvisory.es/"/>
   </url>
+  <url>
+    <loc>https://atadvisory.es/privacidad/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://atadvisory.es/privacidad/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://atadvisory.es/en/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://atadvisory.es/fr/confidentialite/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://atadvisory.es/privacidad/"/>
+  </url>
+  <url>
+    <loc>https://atadvisory.es/en/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://atadvisory.es/privacidad/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://atadvisory.es/en/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://atadvisory.es/fr/confidentialite/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://atadvisory.es/privacidad/"/>
+  </url>
+  <url>
+    <loc>https://atadvisory.es/fr/confidentialite/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://atadvisory.es/privacidad/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://atadvisory.es/en/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://atadvisory.es/fr/confidentialite/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://atadvisory.es/privacidad/"/>
+  </url>
 </urlset>

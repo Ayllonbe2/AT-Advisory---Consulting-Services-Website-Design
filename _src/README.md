@@ -16,9 +16,13 @@ No edites a mano los archivos generados: llevan un aviso al principio y se sobre
 | `config.json` | URL de la web, correo, clave de Web3Forms, idiomas, datos del negocio (JSON-LD) y lista de páginas. |
 | `layout.html` | Estructura común de todas las páginas: `<head>`, cabecera con menú y selector de idioma, y pie. |
 | `pages/home.html` | Contenido de la portada (todas las secciones de la one-page). |
+| `pages/privacy.es.html`, `.en.html`, `.fr.html` | Política de privacidad: una plantilla por idioma, porque es texto legal largo. |
 | `i18n/es.json`, `en.json`, `fr.json` | Textos por idioma. |
 | `../assets/site.css` | Estilos propios de la web, cargados después de `styles.css` (el sistema de diseño). |
 | `../assets/site.js` | Interacciones: tarjeta de la portada, aparición al hacer scroll, «Copiar correo» y envío del formulario. |
+| `../assets/fonts/` | Barlow y Barlow Condensed alojadas en la propia web (licencia en `OFL.txt`), para no enviar la IP de los visitantes a Google Fonts. |
+
+Marcadores útiles en las plantillas: `{{root}}` (ruta a la raíz, para imágenes), `{{home}}` (portada del idioma actual, para `{{home}}#contact`), `{{page:privacy}}` (otra página en el mismo idioma), `{{email}}` y `{{t:clave}}` (texto traducido dentro de un atributo).
 
 ## Cómo funcionan los textos
 
@@ -42,6 +46,13 @@ Para que el formulario envíe directamente desde la web:
 3. Ejecuta `python _src/build.py` y publica.
 
 El formulario mostrará «Enviando…», «¡Gracias!» o un error con el correo de contacto, sin salir de la página. Incluye un campo trampa (`botcheck`) contra bots.
+
+## Privacidad
+
+- El formulario exige marcar «He leído y acepto la política de privacidad» y muestra debajo la información básica de protección de datos (`fLegal`).
+- La política está en `/privacidad/`, `/en/privacy/` y `/fr/confidentialite/`, enlazada desde el pie de todas las páginas.
+- Lo que solo aplica con Web3Forms va entre `<!--if:web3forms-->` y `<!--/if-->`: al poner la clave, la política añade sola a Web3Forms entre los proveedores.
+- La web no usa cookies ni carga recursos de terceros. Si algún día se añade analítica, fuentes externas o un servicio nuevo, hay que actualizar la política (y su fecha) en los tres idiomas.
 
 ## Idiomas y SEO
 

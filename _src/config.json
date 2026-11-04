@@ -46,6 +46,19 @@
       "template": "pages/home.html",
       "path": "",
       "jsonld": true
+    },
+    {
+      "id": "privacy",
+      "template": {
+        "es": "pages/privacy.es.html",
+        "en": "pages/privacy.en.html",
+        "fr": "pages/privacy.fr.html"
+      },
+      "path": {
+        "es": "privacidad",
+        "en": "privacy",
+        "fr": "confidentialite"
+      }
     }
   ]
 }

@@ -184,5 +184,11 @@
     "Espagne",
     "Europe"
   ],
-  "ld.catalog": "Services"
+  "ld.catalog": "Services",
+  "footPrivacy": "Confidentialité",
+  "fConsent": "J'ai lu et j'accepte la",
+  "fConsentLink": "politique de confidentialité",
+  "fLegal": "Responsable : Aarón Ayllón Benítez · Finalité : répondre à votre demande · Base légale : votre consentement · Aucune cession à des tiers, sauf obligation légale · Droits : accès, rectification, effacement et autres, en m'écrivant.",
+  "meta.privacy.title": "Politique de confidentialité · AT Advisory",
+  "meta.privacy.description": "Comment je traite les données envoyées via le formulaire de contact ou par e-mail : responsable, finalité, base légale, conservation, destinataires et vos droits."
 }

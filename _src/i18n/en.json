@@ -184,5 +184,11 @@
     "Spain",
     "Europe"
   ],
-  "ld.catalog": "Services"
+  "ld.catalog": "Services",
+  "footPrivacy": "Privacy",
+  "fConsent": "I have read and accept the",
+  "fConsentLink": "privacy policy",
+  "fLegal": "Controller: Aarón Ayllón Benítez · Purpose: replying to your enquiry · Legal basis: your consent · No data shared with third parties unless required by law · Rights: access, rectification, erasure and more, by emailing me.",
+  "meta.privacy.title": "Privacy policy · AT Advisory",
+  "meta.privacy.description": "How I handle the data you send through the contact form or by email: controller, purpose, legal basis, retention, recipients and your rights."
 }
