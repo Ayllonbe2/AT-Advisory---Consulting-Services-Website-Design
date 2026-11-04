@@ -1,0 +1,51 @@
+{
+  "siteUrl": "https://atadvisory.es",
+  "email": "ayllonbenitez.aaron@gmail.com",
+  "web3formsKey": "",
+  "languages": [
+    {
+      "code": "es",
+      "dir": "",
+      "ogLocale": "es_ES",
+      "flag": "es",
+      "name": "Español"
+    },
+    {
+      "code": "en",
+      "dir": "en/",
+      "ogLocale": "en_GB",
+      "flag": "gb",
+      "name": "English"
+    },
+    {
+      "code": "fr",
+      "dir": "fr/",
+      "ogLocale": "fr_FR",
+      "flag": "fr",
+      "name": "Français"
+    }
+  ],
+  "business": {
+    "name": "AT Advisory",
+    "alternateName": "Ayllon Tech Advisory",
+    "locality": "Madrid",
+    "country": "ES",
+    "founder": {
+      "name": "Aarón Ayllón Benítez",
+      "honorificSuffix": "PhD",
+      "url": "https://aaronayllonbenitez.es",
+      "sameAs": [
+        "https://www.linkedin.com/in/aar%C3%B3n-ayll%C3%B3n-ben%C3%ADtez-ph-d-b5599158/",
+        "https://aaronayllonbenitez.es"
+      ]
+    }
+  },
+  "pages": [
+    {
+      "id": "home",
+      "template": "pages/home.html",
+      "path": "",
+      "jsonld": true
+    }
+  ]
+}

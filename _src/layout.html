@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{{generated}}
+<html lang="{{lang}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{{head}}
+<link rel="icon" type="image/svg+xml" href="{{root}}logo-mark.svg">
+<link rel="stylesheet" href="{{root}}styles.css">
+<link rel="stylesheet" href="{{root}}assets/site.css">
+<script src="{{root}}assets/site.js" defer></script>
+</head>
+<body>
+
+  <header class="nav nav-sticky" style="padding-inline: max(clamp(20px,5vw,64px), calc((100% - 1240px) / 2 + clamp(20px,5vw,64px)))">
+    <a class="nav-brand" href="{{home_top}}"><img src="{{root}}logo-wordmark.svg" alt="AT Advisory" /></a>
+    <input class="nav-toggle-control" id="nav-toggle" type="checkbox" />
+    <label class="nav-toggle-label btn btn-ghost" for="nav-toggle" aria-label="{{t:navMenu}}"><span></span><span></span><span></span></label>
+    <nav class="nav-menu" aria-label="{{t:navLabel}}">
+      <a href="{{home}}#about" data-i18n="navAbout">Sobre mí</a>
+      <a href="{{home}}#method" data-i18n="navMethod">Método</a>
+      <a href="{{home}}#services" data-i18n="navServices">Servicios</a>
+      <a href="{{home}}#work" data-i18n="navWork">Proyectos</a>
+      <a href="{{home}}#audience" data-i18n="navAudience">Para quién</a>
+      <a href="{{home}}#engagement" data-i18n="navEngagement">Cómo trabajamos</a>
+      <a href="{{home}}#contact" data-i18n="navContact">Contacto</a>
+    </nav>
+    <details class="language-picker">
+      <summary class="language-current" aria-label="{{t:langLabel}}"><img src="{{root}}flags/{{flag}}.svg" alt="{{langName}}" width="24" /></summary>
+      <div class="language-options">
+        <a href="{{alt:es}}" hreflang="es" lang="es"{{cur:es}}><img src="{{root}}flags/es.svg" alt="Español" width="24" /></a>
+        <a href="{{alt:en}}" hreflang="en" lang="en"{{cur:en}}><img src="{{root}}flags/gb.svg" alt="English" width="24" /></a>
+        <a href="{{alt:fr}}" hreflang="fr" lang="fr"{{cur:fr}}><img src="{{root}}flags/fr.svg" alt="Français" width="24" /></a>
+      </div>
+    </details>
+    <a href="{{home}}#contact" class="nav-cta btn btn-primary" data-i18n="navCta" style="text-decoration: none; white-space: nowrap; flex: 0 0 auto">Hablemos</a>
+  </header>
+
+<main>
+
+{{content}}
+</main>
+
+  <footer style="max-width: 1240px; margin: 0 auto; padding: 32px clamp(20px,5vw,64px) 48px; font-size: 13px; line-height: 1.8; display: flex; flex-wrap: wrap; gap: 8px 32px; color: var(--color-neutral-700)">
+    <span data-i18n="footBrand">Ayllon Tech Advisory (AT Advisory) · Madrid, España</span>
+    <a href="https://aaronayllonbenitez.es" target="_blank" rel="noopener">aaronayllonbenitez.es ↗</a>
+    <a href="https://www.linkedin.com/in/aar%C3%B3n-ayll%C3%B3n-ben%C3%ADtez-ph-d-b5599158/" target="_blank" rel="noopener">LinkedIn ↗</a>
+  </footer>
+</body>
+</html>

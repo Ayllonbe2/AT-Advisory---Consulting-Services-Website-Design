@@ -1,0 +1,28 @@
+{
+  "navMenu": "Menú",
+  "navLabel": "Principal",
+  "langLabel": "Idioma",
+  "copyDone": "Copiado",
+  "fNoteSend": "Te respondo en dos días laborables.",
+  "fSending": "Enviando…",
+  "fSuccess": "¡Gracias! Mensaje recibido: te respondo en dos días laborables.",
+  "fError": "No se ha podido enviar. Inténtalo de nuevo o escríbeme directamente a {email}.",
+  "meta.home.title": "AT Advisory · Digitalización e IA para pymes y microempresas",
+  "meta.home.description": "Digitalización, integración de IA y visibilidad en asistentes como ChatGPT para pymes y microempresas. Moderniza tu negocio paso a paso, con orden y sin gastos innecesarios.",
+  "meta.home.ogTitle": "AT Advisory · Digitalización e IA para pymes",
+  "ld.description": "Asesoría en digitalización, integración de inteligencia artificial y visibilidad en asistentes de IA para pymes y microempresas.",
+  "ld.jobTitle": "Asesor en digitalización e inteligencia artificial",
+  "ld.knowsAbout": [
+    "Digitalización de pymes",
+    "Transformación digital",
+    "Inteligencia artificial",
+    "Automatización de procesos",
+    "Visibilidad en asistentes de IA",
+    "Estrategia tecnológica"
+  ],
+  "ld.areaServed": [
+    "España",
+    "Europa"
+  ],
+  "ld.catalog": "Servicios"
+}
