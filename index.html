@@ -535,7 +535,11 @@
         <p style="font-size: 15.5px; line-height: 1.7; max-width: 50ch; margin: 28px 0 0; color: var(--color-accent-200)">Cuéntame en qué punto estás: un negocio que pide una puesta al día, un proceso que te roba tiempo, un plan para crecer o simplemente la duda de qué podría hacer la IA por ti. Te respondo en dos días laborables y, si no soy la persona adecuada, te lo diré con&nbsp;sinceridad.</p>
         <p class="contact-email" style="font-size: 15.5px; line-height: 1.7; margin: 24px 0 0"><a href="mailto:ayllonbenitez.aaron@gmail.com" style="color: var(--color-accent-300)">ayllonbenitez.aaron@gmail.com</a><button type="button" class="btn copy-email" data-copy="ayllonbenitez.aaron@gmail.com" data-done="Copiado">Copiar correo</button></p>
       </div>
-      <form class="contact-form" action="mailto:ayllonbenitez.aaron@gmail.com" method="post" enctype="text/plain" data-email="ayllonbenitez.aaron@gmail.com" data-key="" data-sending="Enviando…" data-success="¡Gracias! Mensaje recibido: te respondo en dos días laborables." data-error="No se ha podido enviar. Inténtalo de nuevo o escríbeme directamente a ayllonbenitez.aaron@gmail.com." style="display: grid; gap: 18px">
+      <form class="contact-form" action="https://api.web3forms.com/submit" method="post" data-email="ayllonbenitez.aaron@gmail.com" data-key="e9de7ebf-a03e-4b22-8e08-18be871f4d29" data-sending="Enviando…" data-success="¡Gracias! Mensaje recibido: te respondo en dos días laborables." data-error="No se ha podido enviar. Inténtalo de nuevo o escríbeme directamente a ayllonbenitez.aaron@gmail.com." style="display: grid; gap: 18px">
+        <input type="hidden" name="access_key" value="e9de7ebf-a03e-4b22-8e08-18be871f4d29">
+        <input type="hidden" name="subject" value="Nueva consulta desde atadvisory.es">
+        <input type="hidden" name="from_name" value="Web atadvisory.es">
+        <input type="checkbox" name="botcheck" class="form-trap" tabindex="-1" autocomplete="off" aria-hidden="true">
         <div class="field">
           <label for="at2-name" style="color: var(--color-accent-200)">Nombre</label>
           <input class="input" id="at2-name" name="name" type="text" required style="background: color-mix(in srgb, var(--color-bg) 8%, transparent); border-color: color-mix(in srgb, var(--color-bg) 35%, transparent); color: var(--color-bg)" />
